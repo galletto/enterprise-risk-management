@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="ERM_DBModel" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Asset" representedClassName="Asset" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asset_custodian" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asset_photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="data_retention" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initial_cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_business_confidential_critical" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="is_customer_confidential" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="is_intimate_data" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="is_personal_data" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="replacement_cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <attribute name="value_to_business" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="availability_req" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Availability_req" inverseName="assets" inverseEntity="Availability_req" syncable="YES"/>
+        <relationship name="business_process" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Business_process" inverseName="assets" inverseEntity="Business_process" syncable="YES"/>
+        <relationship name="data_classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Data_classification" inverseName="assets" inverseEntity="Data_classification" syncable="YES"/>
+        <relationship name="integrity_req" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Integrity_req" inverseName="assets" inverseEntity="Integrity_req" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Owner" inverseName="assets" inverseEntity="Owner" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="assets" inverseEntity="Risk_group" syncable="YES"/>
+        <relationship name="risks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk" inverseName="asset" inverseEntity="Risk" syncable="YES"/>
+        <relationship name="site" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Site" inverseName="assets" inverseEntity="Site" syncable="YES"/>
+    </entity>
+    <entity name="Asset_care_criteria" representedClassName="Asset_care_criteria" syncable="YES">
+        <attribute name="is_business_confidential_critical" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="is_customer_confidential" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="is_intimate_data" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="is_personal_data" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="availability_req" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Availability_req" inverseName="asset_care_criterias" inverseEntity="Availability_req" syncable="YES"/>
+        <relationship name="data_classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Data_classification" inverseName="asset_care_criterias" inverseEntity="Data_classification" syncable="YES"/>
+        <relationship name="integrity_req" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Integrity_req" inverseName="asset_care_criterias" inverseEntity="Integrity_req" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="asset_care_criteria" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Availability_req" representedClassName="Availability_req" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="impact_of_unavailability" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="asset_care_criterias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset_care_criteria" inverseName="availability_req" inverseEntity="Asset_care_criteria" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="availability_req" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="availability_reqs" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Business_process" representedClassName="Business_process" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="business_process" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="business_processes" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Data_classification" representedClassName="Data_classification" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disposal_of_electronic_information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disposal_of_physical_medium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="labelling" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="removable_media" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <attribute name="storage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transmission" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="asset_care_criterias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset_care_criteria" inverseName="data_classification" inverseEntity="Asset_care_criteria" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="data_classification" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="data_classifications" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Impact" representedClassName="Impact" syncable="YES">
+        <attribute name="availability" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="confidentiality" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="integrity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="risk_matrixs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk_matrix" inverseName="impact" inverseEntity="Risk_matrix" syncable="YES"/>
+        <relationship name="risks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk" inverseName="impact" inverseEntity="Risk" syncable="YES"/>
+        <relationship name="risks_new" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk" inverseName="new_impact" inverseEntity="Risk" syncable="YES"/>
+    </entity>
+    <entity name="Integrity_req" representedClassName="Integrity_req" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="example" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="asset_care_criterias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset_care_criteria" inverseName="integrity_req" inverseEntity="Asset_care_criteria" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="integrity_req" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="integrity_reqs" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Likelihood" representedClassName="Likelihood" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="risk_matrixs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk_matrix" inverseName="likelihood" inverseEntity="Risk_matrix" syncable="YES"/>
+        <relationship name="risks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk" inverseName="likelihood" inverseEntity="Risk" syncable="YES"/>
+        <relationship name="risks_new" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk" inverseName="new_likelihood" inverseEntity="Risk" syncable="YES"/>
+    </entity>
+    <entity name="Owner" representedClassName="Owner" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="owner_photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="surname" attributeType="String" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="owner" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="owners" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Risk" representedClassName="Risk" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="effectivity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="further_accions_planned" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="other_improvements" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="risk_managemrnt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="risks" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="impact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Impact" inverseName="risks" inverseEntity="Impact" syncable="YES"/>
+        <relationship name="likelihood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Likelihood" inverseName="risks" inverseEntity="Likelihood" syncable="YES"/>
+        <relationship name="new_impact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Impact" inverseName="risks_new" inverseEntity="Impact" syncable="YES"/>
+        <relationship name="new_likelihood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Likelihood" inverseName="risks_new" inverseEntity="Likelihood" syncable="YES"/>
+        <relationship name="threat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Threat" inverseName="risks" inverseEntity="Threat" syncable="YES"/>
+    </entity>
+    <entity name="Risk_group" representedClassName="Risk_group" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="created_by" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updated_by" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="asset_care_criteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset_care_criteria" inverseName="risk_group" inverseEntity="Asset_care_criteria" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="risk_group" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="availability_reqs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Availability_req" inverseName="risk_group" inverseEntity="Availability_req" syncable="YES"/>
+        <relationship name="business_processes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Business_process" inverseName="risk_group" inverseEntity="Business_process" syncable="YES"/>
+        <relationship name="data_classifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Data_classification" inverseName="risk_group" inverseEntity="Data_classification" syncable="YES"/>
+        <relationship name="integrity_reqs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Integrity_req" inverseName="risk_group" inverseEntity="Integrity_req" syncable="YES"/>
+        <relationship name="owners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Owner" inverseName="risk_group" inverseEntity="Owner" syncable="YES"/>
+        <relationship name="risk_levels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk_level" inverseName="risk_group" inverseEntity="Risk_level" syncable="YES"/>
+        <relationship name="risk_matrixs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk_matrix" inverseName="risk_group" inverseEntity="Risk_matrix" syncable="YES"/>
+    </entity>
+    <entity name="Risk_level" representedClassName="Risk_level" syncable="YES">
+        <attribute name="action_required" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="risk_score_max" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="risk_score_min" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="risk_levels" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Risk_matrix" representedClassName="Risk_matrix" syncable="YES">
+        <attribute name="risk_score" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="impact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Impact" inverseName="risk_matrixs" inverseEntity="Impact" syncable="YES"/>
+        <relationship name="likelihood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Likelihood" inverseName="risk_matrixs" inverseEntity="Likelihood" syncable="YES"/>
+        <relationship name="risk_group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Risk_group" inverseName="risk_matrixs" inverseEntity="Risk_group" syncable="YES"/>
+    </entity>
+    <entity name="Site" representedClassName="Site" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <attribute name="site_photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Asset" inverseName="site" inverseEntity="Asset" syncable="YES"/>
+    </entity>
+    <entity name="Threat" representedClassName="Threat" syncable="YES">
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_name" attributeType="String" syncable="YES"/>
+        <attribute name="threat_vulnerability" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="risks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Risk" inverseName="threat" inverseEntity="Risk" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Asset" positionX="-425" positionY="9" width="128" height="388"/>
+        <element name="Asset_care_criteria" positionX="-1125" positionY="-369" width="128" height="163"/>
+        <element name="Availability_req" positionX="-954" positionY="-382" width="144" height="148"/>
+        <element name="Business_process" positionX="-855" positionY="305" width="128" height="118"/>
+        <element name="Data_classification" positionX="-956" positionY="27" width="128" height="225"/>
+        <element name="Impact" positionX="-9" positionY="-72" width="128" height="180"/>
+        <element name="Integrity_req" positionX="-918" positionY="-162" width="128" height="148"/>
+        <element name="Likelihood" positionX="16" positionY="135" width="128" height="133"/>
+        <element name="Owner" positionX="-594" positionY="-18" width="128" height="150"/>
+        <element name="Risk" positionX="-263" positionY="-36" width="128" height="238"/>
+        <element name="Risk_group" positionX="-531" positionY="-351" width="128" height="283"/>
+        <element name="Risk_level" positionX="-218" positionY="-342" width="128" height="135"/>
+        <element name="Risk_matrix" positionX="-191" positionY="-189" width="128" height="103"/>
+        <element name="Site" positionX="-254" positionY="216" width="128" height="225"/>
+        <element name="Threat" positionX="-2" positionY="306" width="128" height="118"/>
+    </elements>
+</model>

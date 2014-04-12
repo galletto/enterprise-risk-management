@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2716FBFC18F86F45002D0E94 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2716FBFB18F86F44002D0E94 /* main.storyboard */; };
+		27B0D03618F88153003273E0 /* ERM_DBModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27B0D03318F88153003273E0 /* ERM_DBModel1.xcdatamodeld */; };
+		27B0D03918F8859C003273E0 /* AGCRiskGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0D03818F8859C003273E0 /* AGCRiskGroupTableViewController.m */; };
+		27B0D04518F889D6003273E0 /* Icon #1 128 Rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D03B18F889D5003273E0 /* Icon #1 128 Rounded.png */; };
+		27B0D04618F889D6003273E0 /* Icon #1 128.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D03C18F889D6003273E0 /* Icon #1 128.png */; };
+		27B0D04718F889D6003273E0 /* Icon #1 29 Rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D03D18F889D6003273E0 /* Icon #1 29 Rounded.png */; };
+		27B0D04818F889D6003273E0 /* Icon #1 29.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D03E18F889D6003273E0 /* Icon #1 29.png */; };
+		27B0D04918F889D6003273E0 /* Icon #1 40 Rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D03F18F889D6003273E0 /* Icon #1 40 Rounded.png */; };
+		27B0D04A18F889D6003273E0 /* Icon #1 40.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D04018F889D6003273E0 /* Icon #1 40.png */; };
+		27B0D04B18F889D6003273E0 /* Icon #1 512 Rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D04118F889D6003273E0 /* Icon #1 512 Rounded.png */; };
+		27B0D04C18F889D6003273E0 /* Icon #1 512.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D04218F889D6003273E0 /* Icon #1 512.png */; };
+		27B0D04D18F889D6003273E0 /* Icon #1 76 Rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D04318F889D6003273E0 /* Icon #1 76 Rounded.png */; };
+		27B0D04E18F889D6003273E0 /* Icon #1 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D04418F889D6003273E0 /* Icon #1 76.png */; };
+		27E3328018F86A1B00988B1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3327F18F86A1B00988B1A /* Foundation.framework */; };
+		27E3328218F86A1B00988B1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328118F86A1B00988B1A /* CoreGraphics.framework */; };
+		27E3328418F86A1B00988B1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328318F86A1B00988B1A /* UIKit.framework */; };
+		27E3328618F86A1B00988B1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328518F86A1B00988B1A /* CoreData.framework */; };
+		27E3328C18F86A1B00988B1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E3328A18F86A1B00988B1A /* InfoPlist.strings */; };
+		27E3328E18F86A1B00988B1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3328D18F86A1B00988B1A /* main.m */; };
+		27E3329218F86A1B00988B1A /* AGCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3329118F86A1B00988B1A /* AGCAppDelegate.m */; };
+		27E3329718F86A1B00988B1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E3329618F86A1B00988B1A /* Images.xcassets */; };
+		27E3329E18F86A1B00988B1A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3329D18F86A1B00988B1A /* XCTest.framework */; };
+		27E3329F18F86A1B00988B1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3327F18F86A1B00988B1A /* Foundation.framework */; };
+		27E332A018F86A1B00988B1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328318F86A1B00988B1A /* UIKit.framework */; };
+		27E332A118F86A1B00988B1A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328518F86A1B00988B1A /* CoreData.framework */; };
+		27E332A918F86A1B00988B1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E332A718F86A1B00988B1A /* InfoPlist.strings */; };
+		27E332AB18F86A1B00988B1A /* Enterprise_Risk_ManagementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E332AA18F86A1B00988B1A /* Enterprise_Risk_ManagementTests.m */; };
+		27F07E7418F86CBE00C9DAC6 /* AGCCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E7118F86CBE00C9DAC6 /* AGCCoreDataHelper.m */; };
+		27F07E7518F86CBE00C9DAC6 /* AGCCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E7318F86CBE00C9DAC6 /* AGCCoreDataTableViewController.m */; };
+		27F07E9518F86CCD00C9DAC6 /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E7818F86CCD00C9DAC6 /* Asset.m */; };
+		27F07E9618F86CCD00C9DAC6 /* Asset_care_criteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E7A18F86CCD00C9DAC6 /* Asset_care_criteria.m */; };
+		27F07E9718F86CCD00C9DAC6 /* Availability_req.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E7C18F86CCD00C9DAC6 /* Availability_req.m */; };
+		27F07E9818F86CCD00C9DAC6 /* Business_process.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E7E18F86CCD00C9DAC6 /* Business_process.m */; };
+		27F07E9918F86CCD00C9DAC6 /* Data_classification.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8018F86CCD00C9DAC6 /* Data_classification.m */; };
+		27F07E9A18F86CCD00C9DAC6 /* Impact.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8218F86CCD00C9DAC6 /* Impact.m */; };
+		27F07E9B18F86CCD00C9DAC6 /* Integrity_req.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8418F86CCD00C9DAC6 /* Integrity_req.m */; };
+		27F07E9C18F86CCD00C9DAC6 /* Likelihood.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8618F86CCD00C9DAC6 /* Likelihood.m */; };
+		27F07E9D18F86CCD00C9DAC6 /* Owner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8818F86CCD00C9DAC6 /* Owner.m */; };
+		27F07E9E18F86CCD00C9DAC6 /* Risk.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8A18F86CCD00C9DAC6 /* Risk.m */; };
+		27F07E9F18F86CCD00C9DAC6 /* Risk_group.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8C18F86CCD00C9DAC6 /* Risk_group.m */; };
+		27F07EA018F86CCD00C9DAC6 /* Risk_level.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E8E18F86CCD00C9DAC6 /* Risk_level.m */; };
+		27F07EA118F86CCD00C9DAC6 /* Risk_matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E9018F86CCD00C9DAC6 /* Risk_matrix.m */; };
+		27F07EA218F86CCD00C9DAC6 /* Site.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E9218F86CCD00C9DAC6 /* Site.m */; };
+		27F07EA318F86CCD00C9DAC6 /* Threat.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F07E9418F86CCD00C9DAC6 /* Threat.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27E332A218F86A1B00988B1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E3327418F86A1B00988B1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27E3327B18F86A1B00988B1A;
+			remoteInfo = "Enterprise Risk Management";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2716FBFB18F86F44002D0E94 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		27B0D03418F88153003273E0 /* ERM_DBModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ERM_DBModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		27B0D03518F88153003273E0 /* ERM_DBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ERM_DBModel.xcdatamodel; sourceTree = "<group>"; };
+		27B0D03718F8859C003273E0 /* AGCRiskGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCRiskGroupTableViewController.h; sourceTree = "<group>"; };
+		27B0D03818F8859C003273E0 /* AGCRiskGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCRiskGroupTableViewController.m; sourceTree = "<group>"; };
+		27B0D03B18F889D5003273E0 /* Icon #1 128 Rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 128 Rounded.png"; sourceTree = "<group>"; };
+		27B0D03C18F889D6003273E0 /* Icon #1 128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 128.png"; sourceTree = "<group>"; };
+		27B0D03D18F889D6003273E0 /* Icon #1 29 Rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 29 Rounded.png"; sourceTree = "<group>"; };
+		27B0D03E18F889D6003273E0 /* Icon #1 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 29.png"; sourceTree = "<group>"; };
+		27B0D03F18F889D6003273E0 /* Icon #1 40 Rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 40 Rounded.png"; sourceTree = "<group>"; };
+		27B0D04018F889D6003273E0 /* Icon #1 40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 40.png"; sourceTree = "<group>"; };
+		27B0D04118F889D6003273E0 /* Icon #1 512 Rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 512 Rounded.png"; sourceTree = "<group>"; };
+		27B0D04218F889D6003273E0 /* Icon #1 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 512.png"; sourceTree = "<group>"; };
+		27B0D04318F889D6003273E0 /* Icon #1 76 Rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 76 Rounded.png"; sourceTree = "<group>"; };
+		27B0D04418F889D6003273E0 /* Icon #1 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon #1 76.png"; sourceTree = "<group>"; };
+		27E3327C18F86A1B00988B1A /* Enterprise Risk Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enterprise Risk Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E3327F18F86A1B00988B1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		27E3328118F86A1B00988B1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		27E3328318F86A1B00988B1A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		27E3328518F86A1B00988B1A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		27E3328918F86A1B00988B1A /* Enterprise Risk Management-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Enterprise Risk Management-Info.plist"; sourceTree = "<group>"; };
+		27E3328B18F86A1B00988B1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E3328D18F86A1B00988B1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27E3328F18F86A1B00988B1A /* Enterprise Risk Management-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Enterprise Risk Management-Prefix.pch"; sourceTree = "<group>"; };
+		27E3329018F86A1B00988B1A /* AGCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGCAppDelegate.h; sourceTree = "<group>"; };
+		27E3329118F86A1B00988B1A /* AGCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGCAppDelegate.m; sourceTree = "<group>"; };
+		27E3329618F86A1B00988B1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		27E3329C18F86A1B00988B1A /* Enterprise Risk ManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Enterprise Risk ManagementTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E3329D18F86A1B00988B1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27E332A618F86A1B00988B1A /* Enterprise Risk ManagementTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Enterprise Risk ManagementTests-Info.plist"; sourceTree = "<group>"; };
+		27E332A818F86A1B00988B1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E332AA18F86A1B00988B1A /* Enterprise_Risk_ManagementTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Enterprise_Risk_ManagementTests.m; sourceTree = "<group>"; };
+		27F07E7018F86CBE00C9DAC6 /* AGCCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCCoreDataHelper.h; sourceTree = "<group>"; };
+		27F07E7118F86CBE00C9DAC6 /* AGCCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCCoreDataHelper.m; sourceTree = "<group>"; };
+		27F07E7218F86CBE00C9DAC6 /* AGCCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCCoreDataTableViewController.h; sourceTree = "<group>"; };
+		27F07E7318F86CBE00C9DAC6 /* AGCCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCCoreDataTableViewController.m; sourceTree = "<group>"; };
+		27F07E7718F86CCD00C9DAC6 /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
+		27F07E7818F86CCD00C9DAC6 /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
+		27F07E7918F86CCD00C9DAC6 /* Asset_care_criteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset_care_criteria.h; sourceTree = "<group>"; };
+		27F07E7A18F86CCD00C9DAC6 /* Asset_care_criteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset_care_criteria.m; sourceTree = "<group>"; };
+		27F07E7B18F86CCD00C9DAC6 /* Availability_req.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Availability_req.h; sourceTree = "<group>"; };
+		27F07E7C18F86CCD00C9DAC6 /* Availability_req.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Availability_req.m; sourceTree = "<group>"; };
+		27F07E7D18F86CCD00C9DAC6 /* Business_process.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business_process.h; sourceTree = "<group>"; };
+		27F07E7E18F86CCD00C9DAC6 /* Business_process.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business_process.m; sourceTree = "<group>"; };
+		27F07E7F18F86CCD00C9DAC6 /* Data_classification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data_classification.h; sourceTree = "<group>"; };
+		27F07E8018F86CCD00C9DAC6 /* Data_classification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data_classification.m; sourceTree = "<group>"; };
+		27F07E8118F86CCD00C9DAC6 /* Impact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Impact.h; sourceTree = "<group>"; };
+		27F07E8218F86CCD00C9DAC6 /* Impact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Impact.m; sourceTree = "<group>"; };
+		27F07E8318F86CCD00C9DAC6 /* Integrity_req.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Integrity_req.h; sourceTree = "<group>"; };
+		27F07E8418F86CCD00C9DAC6 /* Integrity_req.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Integrity_req.m; sourceTree = "<group>"; };
+		27F07E8518F86CCD00C9DAC6 /* Likelihood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Likelihood.h; sourceTree = "<group>"; };
+		27F07E8618F86CCD00C9DAC6 /* Likelihood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Likelihood.m; sourceTree = "<group>"; };
+		27F07E8718F86CCD00C9DAC6 /* Owner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Owner.h; sourceTree = "<group>"; };
+		27F07E8818F86CCD00C9DAC6 /* Owner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Owner.m; sourceTree = "<group>"; };
+		27F07E8918F86CCD00C9DAC6 /* Risk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Risk.h; sourceTree = "<group>"; };
+		27F07E8A18F86CCD00C9DAC6 /* Risk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk.m; sourceTree = "<group>"; };
+		27F07E8B18F86CCD00C9DAC6 /* Risk_group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Risk_group.h; sourceTree = "<group>"; };
+		27F07E8C18F86CCD00C9DAC6 /* Risk_group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk_group.m; sourceTree = "<group>"; };
+		27F07E8D18F86CCD00C9DAC6 /* Risk_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Risk_level.h; sourceTree = "<group>"; };
+		27F07E8E18F86CCD00C9DAC6 /* Risk_level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk_level.m; sourceTree = "<group>"; };
+		27F07E8F18F86CCD00C9DAC6 /* Risk_matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Risk_matrix.h; sourceTree = "<group>"; };
+		27F07E9018F86CCD00C9DAC6 /* Risk_matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk_matrix.m; sourceTree = "<group>"; };
+		27F07E9118F86CCD00C9DAC6 /* Site.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Site.h; sourceTree = "<group>"; };
+		27F07E9218F86CCD00C9DAC6 /* Site.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Site.m; sourceTree = "<group>"; };
+		27F07E9318F86CCD00C9DAC6 /* Threat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Threat.h; sourceTree = "<group>"; };
+		27F07E9418F86CCD00C9DAC6 /* Threat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Threat.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27E3327918F86A1B00988B1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E3328218F86A1B00988B1A /* CoreGraphics.framework in Frameworks */,
+				27E3328618F86A1B00988B1A /* CoreData.framework in Frameworks */,
+				27E3328418F86A1B00988B1A /* UIKit.framework in Frameworks */,
+				27E3328018F86A1B00988B1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27E3329918F86A1B00988B1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E3329E18F86A1B00988B1A /* XCTest.framework in Frameworks */,
+				27E332A118F86A1B00988B1A /* CoreData.framework in Frameworks */,
+				27E332A018F86A1B00988B1A /* UIKit.framework in Frameworks */,
+				27E3329F18F86A1B00988B1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27B0D03A18F889D5003273E0 /* Enterprise Risk Management Icons */ = {
+			isa = PBXGroup;
+			children = (
+				27B0D03B18F889D5003273E0 /* Icon #1 128 Rounded.png */,
+				27B0D03C18F889D6003273E0 /* Icon #1 128.png */,
+				27B0D03D18F889D6003273E0 /* Icon #1 29 Rounded.png */,
+				27B0D03E18F889D6003273E0 /* Icon #1 29.png */,
+				27B0D03F18F889D6003273E0 /* Icon #1 40 Rounded.png */,
+				27B0D04018F889D6003273E0 /* Icon #1 40.png */,
+				27B0D04118F889D6003273E0 /* Icon #1 512 Rounded.png */,
+				27B0D04218F889D6003273E0 /* Icon #1 512.png */,
+				27B0D04318F889D6003273E0 /* Icon #1 76 Rounded.png */,
+				27B0D04418F889D6003273E0 /* Icon #1 76.png */,
+			);
+			path = "Enterprise Risk Management Icons";
+			sourceTree = "<group>";
+		};
+		27E3327318F86A1B00988B1A = {
+			isa = PBXGroup;
+			children = (
+				2716FBFB18F86F44002D0E94 /* main.storyboard */,
+				27B0D03718F8859C003273E0 /* AGCRiskGroupTableViewController.h */,
+				27B0D03818F8859C003273E0 /* AGCRiskGroupTableViewController.m */,
+				27E3328718F86A1B00988B1A /* Enterprise Risk Management */,
+				27F07E6F18F86CBE00C9DAC6 /* Enterprise Risk Management Core Data */,
+				27F07E7618F86CCD00C9DAC6 /* Enterprise Risk Management Data Model */,
+				27E332A418F86A1B00988B1A /* Enterprise Risk ManagementTests */,
+				27E3327E18F86A1B00988B1A /* Frameworks */,
+				27E3327D18F86A1B00988B1A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		27E3327D18F86A1B00988B1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27E3327C18F86A1B00988B1A /* Enterprise Risk Management.app */,
+				27E3329C18F86A1B00988B1A /* Enterprise Risk ManagementTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27E3327E18F86A1B00988B1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27E3327F18F86A1B00988B1A /* Foundation.framework */,
+				27E3328118F86A1B00988B1A /* CoreGraphics.framework */,
+				27E3328318F86A1B00988B1A /* UIKit.framework */,
+				27E3328518F86A1B00988B1A /* CoreData.framework */,
+				27E3329D18F86A1B00988B1A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27E3328718F86A1B00988B1A /* Enterprise Risk Management */ = {
+			isa = PBXGroup;
+			children = (
+				27E3329018F86A1B00988B1A /* AGCAppDelegate.h */,
+				27E3329118F86A1B00988B1A /* AGCAppDelegate.m */,
+				27E3329618F86A1B00988B1A /* Images.xcassets */,
+				27E3328818F86A1B00988B1A /* Supporting Files */,
+			);
+			path = "Enterprise Risk Management";
+			sourceTree = "<group>";
+		};
+		27E3328818F86A1B00988B1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27B0D03A18F889D5003273E0 /* Enterprise Risk Management Icons */,
+				27E3328918F86A1B00988B1A /* Enterprise Risk Management-Info.plist */,
+				27E3328A18F86A1B00988B1A /* InfoPlist.strings */,
+				27E3328D18F86A1B00988B1A /* main.m */,
+				27E3328F18F86A1B00988B1A /* Enterprise Risk Management-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27E332A418F86A1B00988B1A /* Enterprise Risk ManagementTests */ = {
+			isa = PBXGroup;
+			children = (
+				27E332AA18F86A1B00988B1A /* Enterprise_Risk_ManagementTests.m */,
+				27E332A518F86A1B00988B1A /* Supporting Files */,
+			);
+			path = "Enterprise Risk ManagementTests";
+			sourceTree = "<group>";
+		};
+		27E332A518F86A1B00988B1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27E332A618F86A1B00988B1A /* Enterprise Risk ManagementTests-Info.plist */,
+				27E332A718F86A1B00988B1A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27F07E6F18F86CBE00C9DAC6 /* Enterprise Risk Management Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				27F07E7018F86CBE00C9DAC6 /* AGCCoreDataHelper.h */,
+				27F07E7118F86CBE00C9DAC6 /* AGCCoreDataHelper.m */,
+				27F07E7218F86CBE00C9DAC6 /* AGCCoreDataTableViewController.h */,
+				27F07E7318F86CBE00C9DAC6 /* AGCCoreDataTableViewController.m */,
+			);
+			name = "Enterprise Risk Management Core Data";
+			path = "Risk Management Core Data";
+			sourceTree = "<group>";
+		};
+		27F07E7618F86CCD00C9DAC6 /* Enterprise Risk Management Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				27B0D03318F88153003273E0 /* ERM_DBModel1.xcdatamodeld */,
+				27F07E7718F86CCD00C9DAC6 /* Asset.h */,
+				27F07E7818F86CCD00C9DAC6 /* Asset.m */,
+				27F07E7918F86CCD00C9DAC6 /* Asset_care_criteria.h */,
+				27F07E7A18F86CCD00C9DAC6 /* Asset_care_criteria.m */,
+				27F07E7B18F86CCD00C9DAC6 /* Availability_req.h */,
+				27F07E7C18F86CCD00C9DAC6 /* Availability_req.m */,
+				27F07E7D18F86CCD00C9DAC6 /* Business_process.h */,
+				27F07E7E18F86CCD00C9DAC6 /* Business_process.m */,
+				27F07E7F18F86CCD00C9DAC6 /* Data_classification.h */,
+				27F07E8018F86CCD00C9DAC6 /* Data_classification.m */,
+				27F07E8118F86CCD00C9DAC6 /* Impact.h */,
+				27F07E8218F86CCD00C9DAC6 /* Impact.m */,
+				27F07E8318F86CCD00C9DAC6 /* Integrity_req.h */,
+				27F07E8418F86CCD00C9DAC6 /* Integrity_req.m */,
+				27F07E8518F86CCD00C9DAC6 /* Likelihood.h */,
+				27F07E8618F86CCD00C9DAC6 /* Likelihood.m */,
+				27F07E8718F86CCD00C9DAC6 /* Owner.h */,
+				27F07E8818F86CCD00C9DAC6 /* Owner.m */,
+				27F07E8918F86CCD00C9DAC6 /* Risk.h */,
+				27F07E8A18F86CCD00C9DAC6 /* Risk.m */,
+				27F07E8B18F86CCD00C9DAC6 /* Risk_group.h */,
+				27F07E8C18F86CCD00C9DAC6 /* Risk_group.m */,
+				27F07E8D18F86CCD00C9DAC6 /* Risk_level.h */,
+				27F07E8E18F86CCD00C9DAC6 /* Risk_level.m */,
+				27F07E8F18F86CCD00C9DAC6 /* Risk_matrix.h */,
+				27F07E9018F86CCD00C9DAC6 /* Risk_matrix.m */,
+				27F07E9118F86CCD00C9DAC6 /* Site.h */,
+				27F07E9218F86CCD00C9DAC6 /* Site.m */,
+				27F07E9318F86CCD00C9DAC6 /* Threat.h */,
+				27F07E9418F86CCD00C9DAC6 /* Threat.m */,
+			);
+			name = "Enterprise Risk Management Data Model";
+			path = "Risk Management Data Model";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27E3327B18F86A1B00988B1A /* Enterprise Risk Management */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27E332AE18F86A1B00988B1A /* Build configuration list for PBXNativeTarget "Enterprise Risk Management" */;
+			buildPhases = (
+				27E3327818F86A1B00988B1A /* Sources */,
+				27E3327918F86A1B00988B1A /* Frameworks */,
+				27E3327A18F86A1B00988B1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Enterprise Risk Management";
+			productName = "Enterprise Risk Management";
+			productReference = 27E3327C18F86A1B00988B1A /* Enterprise Risk Management.app */;
+			productType = "com.apple.product-type.application";
+		};
+		27E3329B18F86A1B00988B1A /* Enterprise Risk ManagementTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27E332B118F86A1B00988B1A /* Build configuration list for PBXNativeTarget "Enterprise Risk ManagementTests" */;
+			buildPhases = (
+				27E3329818F86A1B00988B1A /* Sources */,
+				27E3329918F86A1B00988B1A /* Frameworks */,
+				27E3329A18F86A1B00988B1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27E332A318F86A1B00988B1A /* PBXTargetDependency */,
+			);
+			name = "Enterprise Risk ManagementTests";
+			productName = "Enterprise Risk ManagementTests";
+			productReference = 27E3329C18F86A1B00988B1A /* Enterprise Risk ManagementTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27E3327418F86A1B00988B1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AGC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = ALARCATX;
+				TargetAttributes = {
+					27E3327B18F86A1B00988B1A = {
+						DevelopmentTeam = RUJ424X4YF;
+					};
+					27E3329B18F86A1B00988B1A = {
+						TestTargetID = 27E3327B18F86A1B00988B1A;
+					};
+				};
+			};
+			buildConfigurationList = 27E3327718F86A1B00988B1A /* Build configuration list for PBXProject "Enterprise Risk Management" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 27E3327318F86A1B00988B1A;
+			productRefGroup = 27E3327D18F86A1B00988B1A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27E3327B18F86A1B00988B1A /* Enterprise Risk Management */,
+				27E3329B18F86A1B00988B1A /* Enterprise Risk ManagementTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27E3327A18F86A1B00988B1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B0D04D18F889D6003273E0 /* Icon #1 76 Rounded.png in Resources */,
+				27B0D04718F889D6003273E0 /* Icon #1 29 Rounded.png in Resources */,
+				27E3328C18F86A1B00988B1A /* InfoPlist.strings in Resources */,
+				27B0D04B18F889D6003273E0 /* Icon #1 512 Rounded.png in Resources */,
+				2716FBFC18F86F45002D0E94 /* main.storyboard in Resources */,
+				27B0D04C18F889D6003273E0 /* Icon #1 512.png in Resources */,
+				27B0D04918F889D6003273E0 /* Icon #1 40 Rounded.png in Resources */,
+				27E3329718F86A1B00988B1A /* Images.xcassets in Resources */,
+				27B0D04618F889D6003273E0 /* Icon #1 128.png in Resources */,
+				27B0D04A18F889D6003273E0 /* Icon #1 40.png in Resources */,
+				27B0D04818F889D6003273E0 /* Icon #1 29.png in Resources */,
+				27B0D04518F889D6003273E0 /* Icon #1 128 Rounded.png in Resources */,
+				27B0D04E18F889D6003273E0 /* Icon #1 76.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27E3329A18F86A1B00988B1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E332A918F86A1B00988B1A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27E3327818F86A1B00988B1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B0D03618F88153003273E0 /* ERM_DBModel1.xcdatamodeld in Sources */,
+				27F07E9E18F86CCD00C9DAC6 /* Risk.m in Sources */,
+				27F07E9818F86CCD00C9DAC6 /* Business_process.m in Sources */,
+				27F07E9518F86CCD00C9DAC6 /* Asset.m in Sources */,
+				27F07E9618F86CCD00C9DAC6 /* Asset_care_criteria.m in Sources */,
+				27F07E9918F86CCD00C9DAC6 /* Data_classification.m in Sources */,
+				27F07E9B18F86CCD00C9DAC6 /* Integrity_req.m in Sources */,
+				27F07E7418F86CBE00C9DAC6 /* AGCCoreDataHelper.m in Sources */,
+				27F07E9C18F86CCD00C9DAC6 /* Likelihood.m in Sources */,
+				27F07EA218F86CCD00C9DAC6 /* Site.m in Sources */,
+				27E3329218F86A1B00988B1A /* AGCAppDelegate.m in Sources */,
+				27B0D03918F8859C003273E0 /* AGCRiskGroupTableViewController.m in Sources */,
+				27E3328E18F86A1B00988B1A /* main.m in Sources */,
+				27F07EA318F86CCD00C9DAC6 /* Threat.m in Sources */,
+				27F07E9A18F86CCD00C9DAC6 /* Impact.m in Sources */,
+				27F07E7518F86CBE00C9DAC6 /* AGCCoreDataTableViewController.m in Sources */,
+				27F07EA018F86CCD00C9DAC6 /* Risk_level.m in Sources */,
+				27F07E9F18F86CCD00C9DAC6 /* Risk_group.m in Sources */,
+				27F07E9D18F86CCD00C9DAC6 /* Owner.m in Sources */,
+				27F07E9718F86CCD00C9DAC6 /* Availability_req.m in Sources */,
+				27F07EA118F86CCD00C9DAC6 /* Risk_matrix.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27E3329818F86A1B00988B1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E332AB18F86A1B00988B1A /* Enterprise_Risk_ManagementTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27E332A318F86A1B00988B1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27E3327B18F86A1B00988B1A /* Enterprise Risk Management */;
+			targetProxy = 27E332A218F86A1B00988B1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27E3328A18F86A1B00988B1A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E3328B18F86A1B00988B1A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		27E332A718F86A1B00988B1A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E332A818F86A1B00988B1A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27E332AC18F86A1B00988B1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		27E332AD18F86A1B00988B1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27E332AF18F86A1B00988B1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Enterprise Risk Management/Enterprise Risk Management-Prefix.pch";
+				INFOPLIST_FILE = "Enterprise Risk Management/Enterprise Risk Management-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		27E332B018F86A1B00988B1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Enterprise Risk Management/Enterprise Risk Management-Prefix.pch";
+				INFOPLIST_FILE = "Enterprise Risk Management/Enterprise Risk Management-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		27E332B218F86A1B00988B1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Enterprise Risk Management.app/Enterprise Risk Management";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Enterprise Risk Management/Enterprise Risk Management-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Enterprise Risk ManagementTests/Enterprise Risk ManagementTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		27E332B318F86A1B00988B1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Enterprise Risk Management.app/Enterprise Risk Management";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Enterprise Risk Management/Enterprise Risk Management-Prefix.pch";
+				INFOPLIST_FILE = "Enterprise Risk ManagementTests/Enterprise Risk ManagementTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27E3327718F86A1B00988B1A /* Build configuration list for PBXProject "Enterprise Risk Management" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E332AC18F86A1B00988B1A /* Debug */,
+				27E332AD18F86A1B00988B1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27E332AE18F86A1B00988B1A /* Build configuration list for PBXNativeTarget "Enterprise Risk Management" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E332AF18F86A1B00988B1A /* Debug */,
+				27E332B018F86A1B00988B1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27E332B118F86A1B00988B1A /* Build configuration list for PBXNativeTarget "Enterprise Risk ManagementTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E332B218F86A1B00988B1A /* Debug */,
+				27E332B318F86A1B00988B1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		27B0D03318F88153003273E0 /* ERM_DBModel1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				27B0D03418F88153003273E0 /* ERM_DBModel 2.xcdatamodel */,
+				27B0D03518F88153003273E0 /* ERM_DBModel.xcdatamodel */,
+			);
+			currentVersion = 27B0D03418F88153003273E0 /* ERM_DBModel 2.xcdatamodel */;
+			path = ERM_DBModel1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 27E3327418F86A1B00988B1A /* Project object */;
+}
