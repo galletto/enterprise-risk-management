@@ -7,6 +7,8 @@
 //
 
 #import "AGCRiskGroupTableViewController.h"
+#import "AGCRiskGroupTableViewCell.h"
+#import "AGCRiskGroupViewController.h"
 #import "AGCCoreDataHelper.h"
 #import "AGCAppDelegate.h"
 #import "Risk_group.h"
@@ -18,7 +20,7 @@
 @implementation AGCRiskGroupTableViewController
 
 
-#define debug 1
+#define debug 0
 
 #pragma mark - DATA
 - (void)configureFetch {
@@ -65,7 +67,7 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     static NSString *cellIdentifier = @"RiskGroupCell";
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    AGCRiskGroupTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDetailButton;
     Risk_group *risk_group = [self.fetchedresultscontroller objectAtIndexPath:indexPath];
     
@@ -75,7 +77,12 @@
          options:0
          range:NSMakeRange(0, [title length])];
     
-    cell.textLabel.text = title;
+    cell.riskgroupcodelbl.text=risk_group.code;
+    cell.riskgroupnamelbl.text=risk_group.short_name;
+    cell.riskgroupdesclbl.text=risk_group.desc;
+    cell.riskgroupdesclbl.text=@"comentario de descripcion largo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+ 
+    cell.riskgroupimagelbl.image=[UIImage imageNamed:@"riskgroupicon.png"];
     
     return cell;
 }
@@ -100,6 +107,25 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    NSManagedObjectID *itemid =
+    [[self.fetchedresultscontroller objectAtIndexPath:indexPath] objectID];
+    
+    Risk_group *item =
+    (Risk_group *)[self.fetchedresultscontroller.managedObjectContext existingObjectWithID:itemid
+            error:nil];
+    item=nil;
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+     withRowAnimation:UITableViewRowAnimationNone];
+}
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -114,6 +140,44 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    AGCRiskGroupViewController *riskgroupviewcontroller = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"Anadir grupo riesgo segue"])
+        {
+            AGCCoreDataHelper *base_de_datos =
+            [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+            Risk_group *newRisk_group =
+            [NSEntityDescription insertNewObjectForEntityForName:@"Risk_group"
+                     inManagedObjectContext:base_de_datos.context];
+            NSError *error = nil;
+            if (![base_de_datos.context
+                          obtainPermanentIDsForObjects:[NSArray arrayWithObject:newRisk_group]
+                          error:&error]) {
+                NSLog(@"Couldn't obtain a permanent ID for object %@", error);
+                }
+            riskgroupviewcontroller.selectedRiskGroupID = newRisk_group.objectID;
+            }
+    else {
+        NSLog(@"Unidentified Segue Attempted!");
+        }
+}
+- (void)tableView:(UITableView *)tableView
+accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    AGCRiskGroupViewController *riskgroupviewcontroller =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"RiskGroupViewController"];
+    riskgroupviewcontroller.selectedRiskGroupID =
+    [[self.fetchedresultscontroller objectAtIndexPath:indexPath] objectID];
+    [self.navigationController pushViewController:riskgroupviewcontroller animated:YES];
 }
 
 /*

@@ -23,6 +23,7 @@
 #import "Risk_matrix.h"
 #import "Risk_level.h"
 #import "Asset.h"
+#import "unistd.h"
 
 #pragma mark - TableViewControllers imports
 
@@ -35,6 +36,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    sleep(3);
+    [[self base_de_datos] iCloudAccountIsSignedIn];
     return YES;
 }
 

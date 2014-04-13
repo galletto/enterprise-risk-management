@@ -14,7 +14,7 @@
 
 @implementation AGCCoreDataTableViewController
 
-#define debug 1
+#define debug 0
 
 #pragma mark - FETCHING
 - (void)performFetch {
@@ -64,7 +64,8 @@ titleForHeaderInSection:(NSInteger)section {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    return [[[self.fetchedresultscontroller sections] objectAtIndex:section] name];
+    // return [[[self.fetchedresultscontroller sections] objectAtIndex:section] name];
+    return @"";
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (debug==1) {

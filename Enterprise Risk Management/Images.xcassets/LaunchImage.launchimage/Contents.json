@@ -12,6 +12,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "4_dim_cube_launch1024.png",
       "scale" : "1x"
     },
     {
@@ -26,6 +27,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "4_dim_cube_launch2048.png",
       "scale" : "2x"
     }
   ],

@@ -8,39 +8,170 @@
         <scene sceneID="BAY-Db-XrM">
             <objects>
                 <tableViewController id="qVa-cN-FlB" customClass="AGCRiskGroupTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5WQ-Gf-Pcx" userLabel="Table View - RiskGroups">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="140" sectionHeaderHeight="22" sectionFooterHeight="22" id="5WQ-Gf-Pcx" userLabel="Table View - RiskGroups">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0ja-gW-6bB">
-                            <rect key="frame" x="0.0" y="211" width="1024" height="44"/>
+                            <rect key="frame" x="0.0" y="225" width="1024" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items/>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RiskGroupCell" rowHeight="125" id="aRh-KM-i1N">
-                                <rect key="frame" x="0.0" y="86" width="1024" height="125"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RiskGroupCell" editingAccessoryType="detailButton" rowHeight="139" id="aRh-KM-i1N" customClass="AGCRiskGroupTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="1024" height="139"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRh-KM-i1N" id="z0u-uV-99e">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="124"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" tableViewCell="aRh-KM-i1N" id="z0u-uV-99e">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="138"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Risk Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg5-0P-u7J">
+                                            <rect key="frame" x="144" y="9" width="838" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RiskGroupCode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIc-iN-IFh">
+                                            <rect key="frame" x="11" y="15" width="125" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Risk Group Description" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="838" translatesAutoresizingMaskIntoConstraints="NO" id="Qzd-Ql-KtZ">
+                                            <rect key="frame" x="144" y="44" width="838" height="76"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-sd-YPN">
+                                            <rect key="frame" x="35" y="44" width="76" height="76"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="riskgroupcodelbl" destination="lIc-iN-IFh" id="u3M-Ya-UTe"/>
+                                    <outlet property="riskgroupdesclbl" destination="Qzd-Ql-KtZ" id="00a-x0-AsK"/>
+                                    <outlet property="riskgroupimagelbl" destination="U4Y-sd-YPN" id="IwV-TS-Htt"/>
+                                    <outlet property="riskgroupnamelbl" destination="zg5-0P-u7J" id="ypT-X0-9HH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="qVa-cN-FlB" id="xqb-SC-KtW"/>
                             <outlet property="delegate" destination="qVa-cN-FlB" id="aiy-dP-zGj"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="enterprise risk groups" id="8kB-vM-4Re">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="xDm-Ry-FPh"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="DLz-ZF-O2J"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="DLz-ZF-O2J"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Sx-Uo-fKa">
+                            <connections>
+                                <segue destination="eXL-MW-wNz" kind="push" identifier="Anadir grupo riesgo segue" id="8Ex-Qg-D4p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjF-fL-hmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1582" y="260"/>
+        </scene>
+        <!--Risk Group View Controller - risk group detail-->
+        <scene sceneID="CT0-ES-LZG">
+            <objects>
+                <viewController storyboardIdentifier="RiskGroupViewController" title="risk group detail" id="eXL-MW-wNz" customClass="AGCRiskGroupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nez-VN-60s"/>
+                        <viewControllerLayoutGuide type="bottom" id="owc-0R-Hh1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GKO-Hp-jhw">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="719"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4v0-nq-r5A">
+                                <rect key="frame" x="0.0" y="65" width="1183" height="751"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Risk Code:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEO-IT-WU8">
+                                        <rect key="frame" x="113" y="54" width="110" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Risk name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nU9-ne-I30">
+                                        <rect key="frame" x="113" y="87" width="110" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="849-wF-C81">
+                                        <rect key="frame" x="94" y="120" width="129" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWA-iP-oNv">
+                                        <rect key="frame" x="94" y="153" width="129" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSq-Tj-PYU">
+                                        <rect key="frame" x="94" y="186" width="129" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date created:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvE-o3-qcH">
+                                        <rect key="frame" x="94" y="219" width="129" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last modified by:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USf-ug-Zru">
+                                        <rect key="frame" x="90" y="252" width="133" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last modified:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8O-ky-3NX">
+                                        <rect key="frame" x="90" y="285" width="133" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="m3j-Aw-mi6">
+                                        <rect key="frame" x="242" y="49" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" title="risk group" id="oDm-bp-Thh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PYM-JV-Ex5">
+                            <connections>
+                                <action selector="done:" destination="eXL-MW-wNz" id="Oxh-ak-yJs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="F1U-Ve-Fzu"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="RiskGroupCodeField" destination="m3j-Aw-mi6" id="ydf-r2-QMD"/>
+                        <outlet property="scrollView" destination="4v0-nq-r5A" id="ppS-Cr-6JM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Os-b7-AwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2917" y="143"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LRu-Dc-d2B">
@@ -62,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="-896" y="893"/>
         </scene>
-        <!--Navigation Controller - risk groups-->
+        <!--Navigation Controller - enterprise risk groups-->
         <scene sceneID="uV3-RI-cHo">
             <objects>
-                <navigationController definesPresentationContext="YES" id="FhO-De-wcT" sceneMemberID="viewController">
+                <navigationController title="enterprise risk groups" definesPresentationContext="YES" id="FhO-De-wcT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="risk groups" image="Icon #1 29.png" id="GV9-gX-YI2"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mof-7O-pe1">
@@ -79,62 +210,156 @@
             </objects>
             <point key="canvasLocation" x="362" y="260"/>
         </scene>
-        <!--Table View Controller - Parameters-->
-        <scene sceneID="JaX-e7-Hyx">
+        <!--View Controller - risk assessment-->
+        <scene sceneID="aMK-XS-Df8">
             <objects>
-                <tableViewController id="tWI-d7-PY8" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IEC-xE-TgE">
+                <viewController title="risk assessment" id="Suz-Dk-cHh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ylR-Kh-NCP"/>
+                        <viewControllerLayoutGuide type="bottom" id="iel-aP-V6Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uuY-QJ-Moz">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RiskAssessmentChart2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0d-Pc-LEg">
+                                <rect key="frame" x="0.0" y="65" width="1024" height="654"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBx-Jp-9hs">
+                                <rect key="frame" x="52" y="235" width="279" height="340"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="LAP-ID-YSf" kind="push" id="4E4-cc-mLs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TpI-zY-8iy"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTf-2s-gqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1319" y="3226"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vk2-Cg-flu">
+            <objects>
+                <viewController id="e1d-rf-DGn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Myd-00-D2n"/>
+                        <viewControllerLayoutGuide type="bottom" id="R2e-GZ-CYa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LjE-yR-OcO">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jJD-6q-tDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3831" y="4979"/>
+        </scene>
+        <!--Table View Controller - Root View Controller-->
+        <scene sceneID="ldz-im-s7I">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Z32-Us-cbJ" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cBa-t9-LCf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VvA-x8-nBU">
-                                <rect key="frame" x="0.0" y="86" width="1024" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssetCell" id="Kdh-32-nKA">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VvA-x8-nBU" id="gsK-kS-9Oj">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kdh-32-nKA" id="kWH-2M-vhe">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="tWI-d7-PY8" id="1jt-YF-RAd"/>
-                            <outlet property="delegate" destination="tWI-d7-PY8" id="3KI-Y1-Uk6"/>
+                            <outlet property="dataSource" destination="Z32-Us-cbJ" id="QXI-ie-6FD"/>
+                            <outlet property="delegate" destination="Z32-Us-cbJ" id="TbL-5d-NbU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Parameters" id="Avb-pO-xX5"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="9zL-S3-sXu"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TN4-aE-uIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uoC-8G-onN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="1226"/>
+            <point key="canvasLocation" x="4379" y="4021"/>
         </scene>
-        <!--Navigation Controller - risk group parameters-->
+        <!--Navigation Controller-->
+        <scene sceneID="w7i-Dw-rbX">
+            <objects>
+                <navigationController id="ccL-h5-TPO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="N3U-Uq-pyB">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Z32-Us-cbJ" kind="relationship" relationship="rootViewController" id="zfg-VQ-cUm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tIr-Lp-tMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3941" y="4021"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="rc1-Ir-jcR">
+            <objects>
+                <splitViewController id="LAP-ID-YSf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="CKg-IW-ZL2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="fc7-kj-G5W">
+                            <connections>
+                                <segue destination="Suz-Dk-cHh" kind="push" id="4mL-id-ewc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="ccL-h5-TPO" kind="relationship" relationship="masterViewController" id="dgR-SS-C3Z"/>
+                        <segue destination="e1d-rf-DGn" kind="relationship" relationship="detailViewController" id="hM2-Vo-BdC"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cw9-Qu-ki1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2504" y="4284"/>
+        </scene>
+        <!--Navigation Controller - risk assessment-->
         <scene sceneID="Z6G-DV-QXI">
             <objects>
-                <navigationController definesPresentationContext="YES" id="ndE-du-nbV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="risk group parameters" image="Icon #1 29 Rounded.png" id="6hJ-6L-ZJX"/>
+                <navigationController definesPresentationContext="YES" id="ndE-du-nbV" userLabel="Navigation Controller - risk assessment" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="risk assessment" image="Icon #1 29 Rounded.png" id="6hJ-6L-ZJX"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aX3-Ro-gRM">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="tWI-d7-PY8" kind="relationship" relationship="rootViewController" id="AGV-En-3ew"/>
+                        <segue destination="Suz-Dk-cHh" kind="push" identifier="RiskAssessmentSegue" id="9me-Rz-U7W"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zr2-NO-vv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="1226"/>
+            <point key="canvasLocation" x="419" y="1234"/>
         </scene>
     </scenes>
     <resources>
         <image name="Icon #1 29 Rounded.png" width="29" height="29"/>
         <image name="Icon #1 29.png" width="29" height="29"/>
+        <image name="RiskAssessmentChart2.png" width="1024" height="653"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="4mL-id-ewc"/>
+    </inferredMetricsTieBreakers>
 </document>
