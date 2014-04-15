@@ -61,13 +61,18 @@
                             <outlet property="delegate" destination="qVa-cN-FlB" id="aiy-dP-zGj"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="g6A-bn-V8J"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="enterprise risk groups" id="8kB-vM-4Re">
+                        <barButtonItem key="leftBarButtonItem" title="Config" id="MRz-tD-eBB"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Sx-Uo-fKa">
                             <connections>
                                 <segue destination="eXL-MW-wNz" kind="push" identifier="RiskGroupViewControllerSegue" id="m8M-TH-AfZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjF-fL-hmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,11 +87,11 @@
                         <viewControllerLayoutGuide type="bottom" id="owc-0R-Hh1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GKO-Hp-jhw">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="719"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4v0-nq-r5A">
-                                <rect key="frame" x="0.0" y="65" width="1024" height="973"/>
+                                <rect key="frame" x="0.0" y="65" width="1024" height="978"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Risk Code:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEO-IT-WU8">
@@ -194,6 +199,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHz-It-nx8">
+                                        <rect key="frame" x="681" y="25" width="219" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Risk Group Specific Parameters">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="4Qb-am-TIi" kind="push" identifier="ParametersSBSegue" id="HM6-h1-Os4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94770672468797035" green="1" blue="0.89032632113516086" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
@@ -202,6 +217,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="risk group" id="oDm-bp-Thh">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ywD-L8-P9t">
                             <connections>
@@ -230,6 +246,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Os-b7-AwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2917" y="143"/>
+        </scene>
+        <!--Story Board Link View Controller-->
+        <scene sceneID="Gfl-el-4AV">
+            <objects>
+                <viewController id="4Qb-am-TIi" customClass="AGCStoryBoardLinkViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g3i-Vi-EBx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Col-8K-v2I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Ol-HM-goL">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uJv-Od-z4Q"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="storyboardName" value="Parameters"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mms-lT-ocG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4073" y="138"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LRu-Dc-d2B">
@@ -304,6 +344,7 @@
                                 <connections>
                                     <action selector="AssetsButton:" destination="Suz-Dk-cHh" eventType="touchUpInside" id="A6M-Gy-lm4"/>
                                     <action selector="EvCriteriaButton:" destination="Suz-Dk-cHh" eventType="touchUpInside" id="0Me-9s-0Tj"/>
+                                    <segue destination="9ih-fI-rE5" kind="push" id="sxC-dd-7Wu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAU-gM-4si">
@@ -315,6 +356,7 @@
                                 <connections>
                                     <action selector="AssetsButton:" destination="Suz-Dk-cHh" eventType="touchUpInside" id="pc9-0b-JGY"/>
                                     <action selector="RiskMatrixButton:" destination="Suz-Dk-cHh" eventType="touchUpInside" id="W6I-N7-2xq"/>
+                                    <segue destination="6h3-Lg-Qai" kind="push" id="STS-QS-pF6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zA0-vP-z3Z">
@@ -343,6 +385,48 @@
             </objects>
             <point key="canvasLocation" x="1645" y="2874"/>
         </scene>
+        <!--View Controller - Risk Matrix-->
+        <scene sceneID="zWY-9i-kXS">
+            <objects>
+                <viewController title="Risk Matrix" id="6h3-Lg-Qai" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MA4-fF-gYw"/>
+                        <viewControllerLayoutGuide type="bottom" id="e0X-BB-19i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GWu-yK-gJ7">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EO2-u0-yOu"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uiv-vc-l3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2833" y="3827"/>
+        </scene>
+        <!--View Controller - evaluation criteria-->
+        <scene sceneID="YJX-gA-fqT">
+            <objects>
+                <viewController title="evaluation criteria" id="9ih-fI-rE5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7gj-H1-Vio"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ua0-Nr-BZT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Dq-PI-1Oc">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="um1-ko-b18"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1st-8F-jEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2743" y="1770"/>
+        </scene>
         <!--Story Board Link View Controller-->
         <scene sceneID="McG-zn-6lo">
             <objects>
@@ -364,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zky-b8-Kqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3237" y="2204"/>
+            <point key="canvasLocation" x="4137" y="2218"/>
         </scene>
         <!--Story Board Link View Controller-->
         <scene sceneID="MqF-IE-B6F">
@@ -387,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifE-Gj-cIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3255" y="3110"/>
+            <point key="canvasLocation" x="4147" y="3090"/>
         </scene>
         <!--Navigation Controller - risk assessment-->
         <scene sceneID="Z6G-DV-QXI">

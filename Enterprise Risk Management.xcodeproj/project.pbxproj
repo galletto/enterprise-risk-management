@@ -55,6 +55,7 @@
 		27E17BFC18FDC7E500BCDF24 /* Risks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E17BFB18FDC7E500BCDF24 /* Risks.storyboard */; };
 		27E17BFE18FDC7FC00BCDF24 /* Parameters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E17BFD18FDC7FC00BCDF24 /* Parameters.storyboard */; };
 		27E17C0218FDC99200BCDF24 /* AGCRisksSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E17C0118FDC99200BCDF24 /* AGCRisksSplitViewController.m */; };
+		27E17C0618FDCCF800BCDF24 /* AGCParametersSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E17C0518FDCCF800BCDF24 /* AGCParametersSplitViewController.m */; };
 		27E3328018F86A1B00988B1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3327F18F86A1B00988B1A /* Foundation.framework */; };
 		27E3328218F86A1B00988B1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328118F86A1B00988B1A /* CoreGraphics.framework */; };
 		27E3328418F86A1B00988B1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328318F86A1B00988B1A /* UIKit.framework */; };
@@ -164,6 +165,8 @@
 		27E17BFD18FDC7FC00BCDF24 /* Parameters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Parameters.storyboard; sourceTree = "<group>"; };
 		27E17C0018FDC99200BCDF24 /* AGCRisksSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGCRisksSplitViewController.h; path = AGCRisksSplitViewController/AGCRisksSplitViewController.h; sourceTree = "<group>"; };
 		27E17C0118FDC99200BCDF24 /* AGCRisksSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGCRisksSplitViewController.m; path = AGCRisksSplitViewController/AGCRisksSplitViewController.m; sourceTree = "<group>"; };
+		27E17C0418FDCCF800BCDF24 /* AGCParametersSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCParametersSplitViewController.h; sourceTree = "<group>"; };
+		27E17C0518FDCCF800BCDF24 /* AGCParametersSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCParametersSplitViewController.m; sourceTree = "<group>"; };
 		27E3327C18F86A1B00988B1A /* Enterprise Risk Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enterprise Risk Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E3327F18F86A1B00988B1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27E3328118F86A1B00988B1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -279,6 +282,15 @@
 			name = AGCRisksSplitViewController;
 			sourceTree = "<group>";
 		};
+		27E17C0318FDCCB700BCDF24 /* AGCParametersSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27E17C0418FDCCF800BCDF24 /* AGCParametersSplitViewController.h */,
+				27E17C0518FDCCF800BCDF24 /* AGCParametersSplitViewController.m */,
+			);
+			name = AGCParametersSplitViewController;
+			sourceTree = "<group>";
+		};
 		27E3327318F86A1B00988B1A = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +300,7 @@
 				27B631D818FD348E0090BCF9 /* Risk Assessment Chart */,
 				27E17BF218FDB4E400BCDF24 /* AGCAssestsSplitViewController */,
 				27E17BFF18FDC94800BCDF24 /* AGCRisksSplitViewController */,
+				27E17C0318FDCCB700BCDF24 /* AGCParametersSplitViewController */,
 				27E3328718F86A1B00988B1A /* Enterprise Risk Management - AppDelegate */,
 				27F07E6F18F86CBE00C9DAC6 /* Enterprise Risk Management Core Data */,
 				27F07E7618F86CCD00C9DAC6 /* Enterprise Risk Management Data Model */,
@@ -322,10 +335,10 @@
 			isa = PBXGroup;
 			children = (
 				27E17BF918FDC03A00BCDF24 /* AGCStoryBoardLinkSource.h */,
-				27E3329018F86A1B00988B1A /* AGCAppDelegate.h */,
-				27E3329118F86A1B00988B1A /* AGCAppDelegate.m */,
 				27E17BF518FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.h */,
 				27E17BF618FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m */,
+				27E3329018F86A1B00988B1A /* AGCAppDelegate.h */,
+				27E3329118F86A1B00988B1A /* AGCAppDelegate.m */,
 				271E966E18FC9446000D9E29 /* AGCDismissSegue.h */,
 				271E966F18FC9446000D9E29 /* AGCDismissSegue.m */,
 				27E3329618F86A1B00988B1A /* Images.xcassets */,
@@ -551,6 +564,7 @@
 				27B631DB18FD34E90090BCF9 /* AGCRiskAssessmentChartViewController.m in Sources */,
 				27B0D03618F88153003273E0 /* ERM_DBModel1.xcdatamodeld in Sources */,
 				27E17BF118FDB4DE00BCDF24 /* AGCAssetsSplitViewController.m in Sources */,
+				27E17C0618FDCCF800BCDF24 /* AGCParametersSplitViewController.m in Sources */,
 				271E960D18FC67B0000D9E29 /* CoreDataImporter.m in Sources */,
 				27B6320B18FD7E2E0090BCF9 /* Availability_req.m in Sources */,
 				2791EFE118F9996A00B3CCD8 /* AGCRiskGroupViewController.m in Sources */,
