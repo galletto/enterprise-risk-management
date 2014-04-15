@@ -1,9 +1,9 @@
 //
 //  Integrity_req.m
-//  Risk Mgmt
+//  Enterprise Risk Management
 //
-//  Created by Alessandro on 05/04/14.
-//  Copyright (c) 2014 Alessandro Galletto. All rights reserved.
+//  Created by Alessandro on 14/04/14.
+//  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import "Integrity_req.h"
@@ -18,6 +18,8 @@
 @dynamic desc;
 @dynamic example;
 @dynamic short_name;
+@dynamic id;
+@dynamic updated_at;
 @dynamic asset_care_criterias;
 @dynamic assets;
 @dynamic risk_group;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AGCCoreDataHelper.h"
+#import "CoreDataHelper.h"
 
 #pragma mark - Interface and Protocols
 
@@ -20,13 +20,11 @@
 #pragma mark - Properties and Outlets
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (nonatomic, strong, readonly) AGCCoreDataHelper *coreDataHelper;
+@property (nonatomic, strong, readonly) CoreDataHelper *coreDataHelper;
 
 #pragma mark - Method Declarations
 
-- (AGCCoreDataHelper *) base_de_datos;
-
+- (CoreDataHelper *) base_de_datos;
 
 @end
 

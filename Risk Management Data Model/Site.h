@@ -1,9 +1,9 @@
 //
 //  Site.h
-//  Risk Mgmt
+//  Enterprise Risk Management
 //
-//  Created by Alessandro on 05/04/14.
-//  Copyright (c) 2014 Alessandro Galletto. All rights reserved.
+//  Created by Alessandro on 14/04/14.
+//  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -21,9 +21,11 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * short_name;
+@property (nonatomic, retain) NSData * site_photo;
 @property (nonatomic, retain) NSString * state;
 @property (nonatomic, retain) NSString * zip;
-@property (nonatomic, retain) NSData * site_photo;
+@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSSet *assets;
 @end
 

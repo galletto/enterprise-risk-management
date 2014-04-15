@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AGCCoreDataTableViewController.h"
+#import "CoreDataTableViewController.h"
 
-@interface AGCRiskGroupTableViewController : AGCCoreDataTableViewController <UIActionSheetDelegate>
+@interface AGCRiskGroupTableViewController : CoreDataTableViewController <UIActionSheetDelegate>
 
 @property (strong, nonatomic) UIActionSheet *clearConfirmActionSheet;
 

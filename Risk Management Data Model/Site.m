@@ -1,9 +1,9 @@
 //
 //  Site.m
-//  Risk Mgmt
+//  Enterprise Risk Management
 //
-//  Created by Alessandro on 05/04/14.
-//  Copyright (c) 2014 Alessandro Galletto. All rights reserved.
+//  Created by Alessandro on 14/04/14.
+//  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import "Site.h"
@@ -20,9 +20,11 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic short_name;
+@dynamic site_photo;
 @dynamic state;
 @dynamic zip;
-@dynamic site_photo;
+@dynamic id;
+@dynamic updated_at;
 @dynamic assets;
 
 @end

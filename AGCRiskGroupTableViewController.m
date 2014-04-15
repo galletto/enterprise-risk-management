@@ -9,7 +9,8 @@
 #import "AGCRiskGroupTableViewController.h"
 #import "AGCRiskGroupTableViewCell.h"
 #import "AGCRiskGroupViewController.h"
-#import "AGCCoreDataHelper.h"
+#import "CoreDataHelper.h"
+#import "Deduplicator.h"
 #import "AGCAppDelegate.h"
 #import "Risk_group.h"
 
@@ -27,8 +28,7 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    AGCCoreDataHelper *cdh =
-    [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+    CoreDataHelper *base_de_datos =[CoreDataHelper sharedHelper];
     
     NSFetchRequest *request =
     [NSFetchRequest fetchRequestWithEntityName:@"Risk_group"];
@@ -38,15 +38,26 @@
          [NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES],
          [NSSortDescriptor sortDescriptorWithKey:@"short_name" ascending:YES], nil];
     [request setFetchBatchSize:50];
-    self.fetchedresultscontroller =
+    self.frc =
     [[NSFetchedResultsController alloc] initWithFetchRequest:request
-         managedObjectContext:cdh.context
+         managedObjectContext:base_de_datos.context
          sectionNameKeyPath:@"code"
          cacheName:nil];
-    self.fetchedresultscontroller.delegate = self;
+    self.frc.delegate = self;
 }
 
 #pragma mark - VIEW
+-(void) viewDidAppear:(BOOL)animated {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    [super viewDidAppear:animated];
+    CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
+    [Deduplicator deDuplicateEntityWithName:@"Risk_group"
+                    withUniqueAttributeName:@"id"
+                          withImportContext:cdh.importContext];
+}
+
 - (void)viewDidLoad {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
@@ -62,6 +73,7 @@
         object:nil];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
@@ -69,7 +81,7 @@
     static NSString *cellIdentifier = @"RiskGroupCell";
     AGCRiskGroupTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDetailButton;
-    Risk_group *risk_group = [self.fetchedresultscontroller objectAtIndexPath:indexPath];
+    Risk_group *risk_group = [self.frc objectAtIndexPath:indexPath];
     
     NSMutableString *title = [NSMutableString stringWithFormat:@"%@%@ %@", risk_group.code, risk_group.short_name, risk_group.desc];
     [title replaceOccurrencesOfString:@"(null)"
@@ -100,11 +112,13 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Risk_group *deleteTarget = [self.fetchedresultscontroller objectAtIndexPath:indexPath];
-        [self.fetchedresultscontroller.managedObjectContext deleteObject:deleteTarget];
+        Risk_group *deleteTarget = [self.frc objectAtIndexPath:indexPath];
+        [self.frc.managedObjectContext deleteObject:deleteTarget];
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
           withRowAnimation:UITableViewRowAnimationFade];
     }
+    CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
+    [cdh backgroundSaveContext];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,18 +127,16 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     NSManagedObjectID *itemid =
-    [[self.fetchedresultscontroller objectAtIndexPath:indexPath] objectID];
+    [[self.frc objectAtIndexPath:indexPath] objectID];
     
     Risk_group *item =
-    (Risk_group *)[self.fetchedresultscontroller.managedObjectContext existingObjectWithID:itemid
+    (Risk_group *)[self.frc.managedObjectContext existingObjectWithID:itemid
             error:nil];
     item=nil;
     
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
      withRowAnimation:UITableViewRowAnimationNone];
 }
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -135,11 +147,13 @@
     return self;
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
 }
 
 #pragma mark - Segue
@@ -151,8 +165,7 @@
     AGCRiskGroupViewController *riskgroupviewcontroller = segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"Anadir grupo riesgo segue"])
         {
-            AGCCoreDataHelper *base_de_datos =
-            [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+            CoreDataHelper *base_de_datos =[CoreDataHelper sharedHelper];
             Risk_group *newRisk_group =
             [NSEntityDescription insertNewObjectForEntityForName:@"Risk_group"
                      inManagedObjectContext:base_de_datos.context];
@@ -176,7 +189,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     AGCRiskGroupViewController *riskgroupviewcontroller =
     [self.storyboard instantiateViewControllerWithIdentifier:@"RiskGroupViewController"];
     riskgroupviewcontroller.selectedRiskGroupID =
-    [[self.fetchedresultscontroller objectAtIndexPath:indexPath] objectID];
+    [[self.frc objectAtIndexPath:indexPath] objectID];
     [self.navigationController pushViewController:riskgroupviewcontroller animated:YES];
 }
 

@@ -8,6 +8,7 @@
 
 #pragma mark - Core data imports
 #import "AGCAppDelegate.h"
+#import "CoreDataHelper.h"
 #import "Data_classification.h"
 #import "Threat.h"
 #import "Integrity_req.h"
@@ -37,7 +38,7 @@
 {
     // Override point for customization after application launch.
     sleep(3);
-    [[self base_de_datos] iCloudAccountIsSignedIn];
+    [[CoreDataHelper sharedHelper] ensureAppropriateStoreIsLoaded];
     return YES;
 }
 
@@ -51,13 +52,14 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [[self base_de_datos] saveContext];
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
     
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[CoreDataHelper sharedHelper] ensureAppropriateStoreIsLoaded];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -69,14 +71,13 @@
         }
     
     [self base_de_datos];
-    [self demo];
     
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [[self base_de_datos] saveContext];
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
 }
 
 #pragma mark - Button IBActions
@@ -85,22 +86,18 @@
 
 #pragma mark - Class Methods
 
-- (AGCCoreDataHelper *) base_de_datos {
+- (CoreDataHelper *) base_de_datos {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     
     if (!_coreDataHelper) {
         static dispatch_once_t predicate;
-        dispatch_once(&predicate, ^{_coreDataHelper = [AGCCoreDataHelper new];} );
+        dispatch_once(&predicate, ^{_coreDataHelper = [CoreDataHelper new];} );
         [_coreDataHelper setupCoreData];
     }
     
     return _coreDataHelper;
-}
-
-- (void) demo {
-    
 }
 
 

@@ -1,9 +1,9 @@
 //
 //  Data_classification.m
-//  Risk Mgmt
+//  Enterprise Risk Management
 //
-//  Created by Alessandro on 05/04/14.
-//  Copyright (c) 2014 Alessandro Galletto. All rights reserved.
+//  Created by Alessandro on 14/04/14.
+//  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import "Data_classification.h"
@@ -16,13 +16,15 @@
 
 @dynamic code;
 @dynamic desc;
-@dynamic labelling;
-@dynamic short_name;
-@dynamic transmission;
-@dynamic storage;
-@dynamic removable_media;
 @dynamic disposal_of_electronic_information;
 @dynamic disposal_of_physical_medium;
+@dynamic labelling;
+@dynamic removable_media;
+@dynamic short_name;
+@dynamic storage;
+@dynamic transmission;
+@dynamic id;
+@dynamic updated_at;
 @dynamic asset_care_criterias;
 @dynamic assets;
 @dynamic risk_group;

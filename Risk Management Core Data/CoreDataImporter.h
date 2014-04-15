@@ -1,20 +1,22 @@
 //
-//  AGCCoreDataImporter.h
-//  Enterprise Risk Management
+//  CoreDataImporter.h
+//  v2.0
 //
-//  Created by Alessandro on 12/04/14.
-//  Copyright (c) 2014 ALARCATX. All rights reserved.
+//  Created by Tim Roadley on 09/09/13.
+//  Copyright (c) 2013 Tim Roadley. All rights reserved.
+//
+//  This class is free to use in production applications for owners of "Learning Core Data for iOS" by Tim Roadley
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-@interface AGCCoreDataImporter : NSObject
+@interface CoreDataImporter : NSObject
 @property (nonatomic, retain) NSDictionary *entitiesWithUniqueAttributes;
 
 + (void)saveContext:(NSManagedObjectContext*)context;
-- (AGCCoreDataImporter*)initWithUniqueAttributes:(NSDictionary*)uniqueAttributes;
+- (CoreDataImporter*)initWithUniqueAttributes:(NSDictionary*)uniqueAttributes;
 - (NSString*)uniqueAttributeForEntity:(NSString*)entity;
+
 - (NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString*)entity
                                 uniqueAttributeValue:(NSString*)uniqueAttributeValue
                                      attributeValues:(NSDictionary*)attributeValues
@@ -25,4 +27,8 @@
                                  sourceXMLAttribute:(NSString*)sourceXMLAttribute
                                       attributeDict:(NSDictionary*)attributeDict
                                             context:(NSManagedObjectContext*)context;
+
+- (void)deepCopyEntities:(NSArray*)entities
+             fromContext:(NSManagedObjectContext*)sourceContext
+               toContext:(NSManagedObjectContext*)targetContext;
 @end

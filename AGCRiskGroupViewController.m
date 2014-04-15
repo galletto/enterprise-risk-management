@@ -61,8 +61,7 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    AGCCoreDataHelper *base_de_datos =
-    [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+    CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
     Risk_group *risk_group =
     (Risk_group*)[base_de_datos.context existingObjectWithID:self.selectedRiskGroupID error:nil];
     
@@ -73,7 +72,7 @@
         risk_group.code = self.RiskGroupCodeField.text;
         }
   //  else if (textField == self.Risk_groupNameField) {
-    //    risk_group.short_name =self.RiskGroupNameeField.text];
+    //    risk_group.short_name =self.RiskGroupNameField.text];
       //  }
 }
 
@@ -84,8 +83,7 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     if (self.selectedRiskGroupID) {
-        AGCCoreDataHelper *base_de_datos =
-            [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+        CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
         Risk_group *risk_group =
         (Risk_group*)[base_de_datos.context existingObjectWithID:self.selectedRiskGroupID
                         error:nil];
@@ -115,8 +113,7 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    AGCCoreDataHelper *base_de_datos =
-    [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+    CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
     [base_de_datos saveContext];
 }
 
@@ -135,6 +132,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
 }
 
 /*

@@ -1,9 +1,9 @@
 //
 //  Impact.m
-//  Risk Mgmt
+//  Enterprise Risk Management
 //
-//  Created by Alessandro on 05/04/14.
-//  Copyright (c) 2014 Alessandro Galletto. All rights reserved.
+//  Created by Alessandro on 14/04/14.
+//  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import "Impact.h"
@@ -13,12 +13,14 @@
 
 @implementation Impact
 
-@dynamic code;
-@dynamic desc;
-@dynamic short_name;
-@dynamic confidentiality;
-@dynamic integrity;
 @dynamic availability;
+@dynamic code;
+@dynamic confidentiality;
+@dynamic desc;
+@dynamic integrity;
+@dynamic short_name;
+@dynamic id;
+@dynamic updated_at;
 @dynamic risk_matrixs;
 @dynamic risks;
 @dynamic risks_new;
