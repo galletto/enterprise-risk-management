@@ -50,6 +50,11 @@
 		27B6321118FD7E2E0090BCF9 /* Integrity_req.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B6321018FD7E2E0090BCF9 /* Integrity_req.m */; };
 		27B6321318FD82640090BCF9 /* DefaultData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27B6321218FD82570090BCF9 /* DefaultData.sqlite */; };
 		27E17BF118FDB4DE00BCDF24 /* AGCAssetsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E17BF018FDB4DE00BCDF24 /* AGCAssetsSplitViewController.m */; };
+		27E17BF418FDBC8E00BCDF24 /* Assets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E17BF318FDBC8E00BCDF24 /* Assets.storyboard */; };
+		27E17BF718FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E17BF618FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m */; };
+		27E17BFC18FDC7E500BCDF24 /* Risks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E17BFB18FDC7E500BCDF24 /* Risks.storyboard */; };
+		27E17BFE18FDC7FC00BCDF24 /* Parameters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E17BFD18FDC7FC00BCDF24 /* Parameters.storyboard */; };
+		27E17C0218FDC99200BCDF24 /* AGCRisksSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E17C0118FDC99200BCDF24 /* AGCRisksSplitViewController.m */; };
 		27E3328018F86A1B00988B1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3327F18F86A1B00988B1A /* Foundation.framework */; };
 		27E3328218F86A1B00988B1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328118F86A1B00988B1A /* CoreGraphics.framework */; };
 		27E3328418F86A1B00988B1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E3328318F86A1B00988B1A /* UIKit.framework */; };
@@ -151,6 +156,14 @@
 		27B6321218FD82570090BCF9 /* DefaultData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DefaultData.sqlite; sourceTree = "<group>"; };
 		27E17BEF18FDB4DE00BCDF24 /* AGCAssetsSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGCAssetsSplitViewController.h; path = AGCAssetsSplitView/AGCAssetsSplitViewController.h; sourceTree = "<group>"; };
 		27E17BF018FDB4DE00BCDF24 /* AGCAssetsSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGCAssetsSplitViewController.m; path = AGCAssetsSplitView/AGCAssetsSplitViewController.m; sourceTree = "<group>"; };
+		27E17BF318FDBC8E00BCDF24 /* Assets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Assets.storyboard; path = AGCAssetsSplitView/Assets.storyboard; sourceTree = "<group>"; };
+		27E17BF518FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCStoryBoardLinkViewController.h; sourceTree = "<group>"; };
+		27E17BF618FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCStoryBoardLinkViewController.m; sourceTree = "<group>"; };
+		27E17BF918FDC03A00BCDF24 /* AGCStoryBoardLinkSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGCStoryBoardLinkSource.h; sourceTree = "<group>"; };
+		27E17BFB18FDC7E500BCDF24 /* Risks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Risks.storyboard; sourceTree = "<group>"; };
+		27E17BFD18FDC7FC00BCDF24 /* Parameters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Parameters.storyboard; sourceTree = "<group>"; };
+		27E17C0018FDC99200BCDF24 /* AGCRisksSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGCRisksSplitViewController.h; path = AGCRisksSplitViewController/AGCRisksSplitViewController.h; sourceTree = "<group>"; };
+		27E17C0118FDC99200BCDF24 /* AGCRisksSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGCRisksSplitViewController.m; path = AGCRisksSplitViewController/AGCRisksSplitViewController.m; sourceTree = "<group>"; };
 		27E3327C18F86A1B00988B1A /* Enterprise Risk Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enterprise Risk Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E3327F18F86A1B00988B1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27E3328118F86A1B00988B1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -246,14 +259,35 @@
 			name = AGCAssestsSplitViewController;
 			sourceTree = "<group>";
 		};
+		27E17BFA18FDC6A300BCDF24 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2716FBFB18F86F44002D0E94 /* main.storyboard */,
+				27E17BFB18FDC7E500BCDF24 /* Risks.storyboard */,
+				27E17BFD18FDC7FC00BCDF24 /* Parameters.storyboard */,
+				27E17BF318FDBC8E00BCDF24 /* Assets.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		27E17BFF18FDC94800BCDF24 /* AGCRisksSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27E17C0018FDC99200BCDF24 /* AGCRisksSplitViewController.h */,
+				27E17C0118FDC99200BCDF24 /* AGCRisksSplitViewController.m */,
+			);
+			name = AGCRisksSplitViewController;
+			sourceTree = "<group>";
+		};
 		27E3327318F86A1B00988B1A = {
 			isa = PBXGroup;
 			children = (
+				27E17BFA18FDC6A300BCDF24 /* Storyboards */,
 				2791EFE718FA62ED00B3CCD8 /* Enterprise Risk Management.entitlements */,
-				2716FBFB18F86F44002D0E94 /* main.storyboard */,
 				2791EFDA18F9744100B3CCD8 /* Home - Risk Groups */,
 				27B631D818FD348E0090BCF9 /* Risk Assessment Chart */,
 				27E17BF218FDB4E400BCDF24 /* AGCAssestsSplitViewController */,
+				27E17BFF18FDC94800BCDF24 /* AGCRisksSplitViewController */,
 				27E3328718F86A1B00988B1A /* Enterprise Risk Management - AppDelegate */,
 				27F07E6F18F86CBE00C9DAC6 /* Enterprise Risk Management Core Data */,
 				27F07E7618F86CCD00C9DAC6 /* Enterprise Risk Management Data Model */,
@@ -287,8 +321,11 @@
 		27E3328718F86A1B00988B1A /* Enterprise Risk Management - AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				27E17BF918FDC03A00BCDF24 /* AGCStoryBoardLinkSource.h */,
 				27E3329018F86A1B00988B1A /* AGCAppDelegate.h */,
 				27E3329118F86A1B00988B1A /* AGCAppDelegate.m */,
+				27E17BF518FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.h */,
+				27E17BF618FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m */,
 				271E966E18FC9446000D9E29 /* AGCDismissSegue.h */,
 				271E966F18FC9446000D9E29 /* AGCDismissSegue.m */,
 				27E3329618F86A1B00988B1A /* Images.xcassets */,
@@ -475,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B6321318FD82640090BCF9 /* DefaultData.sqlite in Resources */,
+				27E17BFC18FDC7E500BCDF24 /* Risks.storyboard in Resources */,
 				2791EFDE18F98FFC00B3CCD8 /* RiskAssessmentChart2.png in Resources */,
 				27B0D04D18F889D6003273E0 /* Icon #1 76 Rounded.png in Resources */,
 				27B0D04718F889D6003273E0 /* Icon #1 29 Rounded.png in Resources */,
@@ -486,8 +524,10 @@
 				27B0D04918F889D6003273E0 /* Icon #1 40 Rounded.png in Resources */,
 				27E3329718F86A1B00988B1A /* Images.xcassets in Resources */,
 				27B0D04618F889D6003273E0 /* Icon #1 128.png in Resources */,
+				27E17BFE18FDC7FC00BCDF24 /* Parameters.storyboard in Resources */,
 				27B0D04A18F889D6003273E0 /* Icon #1 40.png in Resources */,
 				27B0D04818F889D6003273E0 /* Icon #1 29.png in Resources */,
+				27E17BF418FDBC8E00BCDF24 /* Assets.storyboard in Resources */,
 				27B0D04518F889D6003273E0 /* Icon #1 128 Rounded.png in Resources */,
 				27B0D04E18F889D6003273E0 /* Icon #1 76.png in Resources */,
 			);
@@ -531,8 +571,10 @@
 				27E3328E18F86A1B00988B1A /* main.m in Sources */,
 				27B631F318FD7E2D0090BCF9 /* Impact.m in Sources */,
 				27B631EA18FD7E2D0090BCF9 /* Risk_group.m in Sources */,
+				27E17BF718FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m in Sources */,
 				27B6321118FD7E2E0090BCF9 /* Integrity_req.m in Sources */,
 				27B631ED18FD7E2D0090BCF9 /* Risk_level.m in Sources */,
+				27E17C0218FDC99200BCDF24 /* AGCRisksSplitViewController.m in Sources */,
 				27B6320218FD7E2E0090BCF9 /* Risk.m in Sources */,
 				2791EFD718F9078D00B3CCD8 /* AGCRiskGroupTableViewCell.m in Sources */,
 				271E960C18FC67B0000D9E29 /* CoreDataHelper.m in Sources */,
