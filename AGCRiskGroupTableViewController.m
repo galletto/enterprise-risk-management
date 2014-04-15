@@ -71,6 +71,7 @@
         selector:@selector(performFetch)
         name:@"SomethingChanged"
         object:nil];
+
 }
 
 
@@ -92,7 +93,7 @@
     cell.riskgroupcodelbl.text=risk_group.code;
     cell.riskgroupnamelbl.text=risk_group.short_name;
     cell.riskgroupdesclbl.text=risk_group.desc;
-    cell.riskgroupdesclbl.text=@"comentario de descripcion largo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+    
  
     cell.riskgroupimagelbl.image=[UIImage imageNamed:@"riskgroupicon.png"];
     
@@ -126,16 +127,10 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    NSManagedObjectID *itemid =
-    [[self.frc objectAtIndexPath:indexPath] objectID];
     
-    Risk_group *item =
-    (Risk_group *)[self.frc.managedObjectContext existingObjectWithID:itemid
-            error:nil];
-    item=nil;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor colorWithRed:0.1 green:1.0 blue:0.1 alpha:1.0];
     
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-     withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -163,7 +158,7 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     AGCRiskGroupViewController *riskgroupviewcontroller = segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"Anadir grupo riesgo segue"])
+    if ([segue.identifier isEqualToString:@"RiskGroupViewControllerSegue"])
         {
             CoreDataHelper *base_de_datos =[CoreDataHelper sharedHelper];
             Risk_group *newRisk_group =
@@ -182,7 +177,7 @@
         }
 }
 - (void)tableView:(UITableView *)tableView
-accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+                    accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }

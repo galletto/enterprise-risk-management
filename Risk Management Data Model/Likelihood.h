@@ -2,7 +2,7 @@
 //  Likelihood.h
 //  Enterprise Risk Management
 //
-//  Created by Alessandro on 14/04/14.
+//  Created by Alessandro on 15/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * desc;
-@property (nonatomic, retain) NSString * short_name;
 @property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * short_name;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSSet *risk_matrixs;
 @property (nonatomic, retain) NSSet *risks;

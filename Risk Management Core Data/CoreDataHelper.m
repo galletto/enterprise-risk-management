@@ -14,7 +14,7 @@
 
 @implementation CoreDataHelper
 
-#define debug 1
+#define debug 0
 
 #pragma mark - SHARED HELPER
 + (CoreDataHelper*)sharedHelper {
@@ -149,7 +149,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         @{
           NSMigratePersistentStoresAutomaticallyOption:@YES
           ,NSInferMappingModelAutomaticallyOption:@YES
-          //,NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"} // Option to disable WAL mode
+       //   ,NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"} // Option to disable WAL mode
           };
         NSError *error = nil;
         _store = [_coordinator addPersistentStoreWithType:NSSQLiteStoreType

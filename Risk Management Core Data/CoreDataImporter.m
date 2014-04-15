@@ -9,8 +9,11 @@
 //
 
 #import "CoreDataImporter.h"
+
 @implementation CoreDataImporter
+
 #define debug 0
+
 + (void)saveContext:(NSManagedObjectContext*)context {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));

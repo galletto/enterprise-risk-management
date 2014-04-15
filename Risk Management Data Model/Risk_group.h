@@ -2,7 +2,7 @@
 //  Risk_group.h
 //  Enterprise Risk Management
 //
-//  Created by Alessandro on 14/04/14.
+//  Created by Alessandro on 15/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -14,13 +14,14 @@
 @interface Risk_group : NSManagedObject
 
 @property (nonatomic, retain) NSString * code;
+@property (nonatomic, retain) NSString * company;
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSString * created_by;
 @property (nonatomic, retain) NSString * desc;
+@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * short_name;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSString * updated_by;
-@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) Asset_care_criteria *asset_care_criteria;
 @property (nonatomic, retain) NSSet *assets;
 @property (nonatomic, retain) NSSet *availability_reqs;

@@ -2,7 +2,7 @@
 //  Asset.h
 //  Enterprise Risk Management
 //
-//  Created by Alessandro on 14/04/14.
+//  Created by Alessandro on 15/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSString * data_retention;
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * format;
+@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * initial_cost;
 @property (nonatomic, retain) NSNumber * is_business_confidential_critical;
 @property (nonatomic, retain) NSNumber * is_customer_confidential;
@@ -27,9 +28,8 @@
 @property (nonatomic, retain) NSNumber * is_personal_data;
 @property (nonatomic, retain) NSString * replacement_cost;
 @property (nonatomic, retain) NSString * short_name;
-@property (nonatomic, retain) NSString * value_to_business;
-@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSDate * updated_at;
+@property (nonatomic, retain) NSString * value_to_business;
 @property (nonatomic, retain) Availability_req *availability_req;
 @property (nonatomic, retain) Business_process *business_process;
 @property (nonatomic, retain) Data_classification *data_classification;

@@ -2,7 +2,7 @@
 //  Asset.m
 //  Enterprise Risk Management
 //
-//  Created by Alessandro on 14/04/14.
+//  Created by Alessandro on 15/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -26,6 +26,7 @@
 @dynamic data_retention;
 @dynamic desc;
 @dynamic format;
+@dynamic id;
 @dynamic initial_cost;
 @dynamic is_business_confidential_critical;
 @dynamic is_customer_confidential;
@@ -33,9 +34,8 @@
 @dynamic is_personal_data;
 @dynamic replacement_cost;
 @dynamic short_name;
-@dynamic value_to_business;
-@dynamic id;
 @dynamic updated_at;
+@dynamic value_to_business;
 @dynamic availability_req;
 @dynamic business_process;
 @dynamic data_classification;

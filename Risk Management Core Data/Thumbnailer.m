@@ -12,6 +12,7 @@
 #import "Faulter.h"
 
 @implementation Thumbnailer
+
 #define debug 0
 
 + (void)createMissingThumbnailsForEntityName:(NSString*)entityName

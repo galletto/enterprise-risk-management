@@ -9,7 +9,9 @@
 //
 
 #import "CoreDataTableViewController.h"
+
 @implementation CoreDataTableViewController
+
 #define debug 0
 
 #pragma mark - FETCHING
@@ -56,7 +58,9 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    return [[[[self frcFromTV:tableView] sections] objectAtIndex:section] name];
+    // AGC no quiero cabeceras en cada fila
+    // return [[[[self frcFromTV:tableView] sections] objectAtIndex:section] name];
+    return @"";
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (debug==1) {

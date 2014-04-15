@@ -2,7 +2,7 @@
 //  Risk_group.m
 //  Enterprise Risk Management
 //
-//  Created by Alessandro on 14/04/14.
+//  Created by Alessandro on 15/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -21,13 +21,14 @@
 @implementation Risk_group
 
 @dynamic code;
+@dynamic company;
 @dynamic created_at;
 @dynamic created_by;
 @dynamic desc;
+@dynamic id;
 @dynamic short_name;
 @dynamic updated_at;
 @dynamic updated_by;
-@dynamic id;
 @dynamic asset_care_criteria;
 @dynamic assets;
 @dynamic availability_reqs;

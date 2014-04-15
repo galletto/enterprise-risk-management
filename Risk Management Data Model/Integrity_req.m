@@ -2,7 +2,7 @@
 //  Integrity_req.m
 //  Enterprise Risk Management
 //
-//  Created by Alessandro on 14/04/14.
+//  Created by Alessandro on 15/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -17,8 +17,8 @@
 @dynamic code;
 @dynamic desc;
 @dynamic example;
-@dynamic short_name;
 @dynamic id;
+@dynamic short_name;
 @dynamic updated_at;
 @dynamic asset_care_criterias;
 @dynamic assets;
