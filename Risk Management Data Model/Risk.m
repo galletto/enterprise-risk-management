@@ -1,8 +1,8 @@
 //
 //  Risk.m
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @dynamic effectivity;
 @dynamic further_accions_planned;
 @dynamic id;
+@dynamic orderingValue;
 @dynamic other_improvements;
 @dynamic risk_managemrnt;
 @dynamic short_name;

@@ -1,13 +1,14 @@
 //
 //  Owner.m
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import "Owner.h"
 #import "Asset.h"
+#import "Owner_photo.h"
 #import "Risk_group.h"
 
 
@@ -17,10 +18,11 @@
 @dynamic id;
 @dynamic mobile;
 @dynamic name;
-@dynamic owner_photo;
 @dynamic surname;
+@dynamic thumbnail;
 @dynamic updated_at;
 @dynamic assets;
+@dynamic photo;
 @dynamic risk_group;
 
 @end

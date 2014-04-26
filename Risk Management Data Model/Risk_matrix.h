@@ -1,8 +1,8 @@
 //
 //  Risk_matrix.h
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface Risk_matrix : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSNumber * risk_score;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) Impact *impact;

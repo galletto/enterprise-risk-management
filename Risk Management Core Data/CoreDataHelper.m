@@ -29,9 +29,9 @@
 }
 
 #pragma mark - FILES
-NSString *storeFilename = @"Non-iCloud.sqlite";
-NSString *sourceStoreFilename = @"DefaultData.sqlite";
-NSString *iCloudStoreFilename = @"iCloud.sqlite";
+NSString *storeFilename = @"RM-Non-iCloud.sqlite";
+NSString *sourceStoreFilename = @"RM-DefaultData.sqlite";
+NSString *iCloudStoreFilename = @"RM-iCloud.sqlite";
 
 #pragma mark - PATHS
 - (NSString *)applicationDocumentsDirectory {
@@ -149,7 +149,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         @{
           NSMigratePersistentStoresAutomaticallyOption:@YES
           ,NSInferMappingModelAutomaticallyOption:@YES
-       //   ,NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"} // Option to disable WAL mode
+     //     ,NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"} // Option to disable WAL mode
           };
         NSError *error = nil;
         _store = [_coordinator addPersistentStoreWithType:NSSQLiteStoreType
@@ -201,7 +201,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
             }
         }
         NSLog(@"** Attempting to load the Local, Non-iCloud Store **");
-        [self setDefaultDataStoreAsInitialStore]; // Enable if you have a DefaultData.sqlite file you'd like to ship with the application
+        [self setDefaultDataStoreAsInitialStore]; // Enable if you have a RM-DefaultData.sqlite file you'd like to ship with the application
         [self loadStore];
     } else {
         NSLog(@"SKIPPED setupCoreData, there's an existing Store:\n ** _store(%@)\n ** _iCloudStore(%@)", _store, _iCloudStore);
@@ -551,7 +551,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     }
 }
 
-#pragma mark – DATA IMPORT
+#pragma mark - DATA IMPORT
 - (BOOL)isDefaultDataAlreadyImportedForStoreWithURL:(NSURL*)url ofType:(NSString*)type {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
@@ -581,7 +581,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
                                                     ofType:NSSQLiteStoreType]) {
         self.importAlertView =
         [[UIAlertView alloc] initWithTitle:@"Import Default Data?"
-                                   message:@"If you've never used Grocery Dude before then some default data might help you understand how to use it. Tap 'Import' to import default data. Tap 'Cancel' to skip the import, especially if you've done this before on other devices."
+                                   message:@"If you've never used risk manager before then some default data might help you understand how to use it. Tap 'Import' to import default data. Tap 'Cancel' to skip the import, especially if you've done this before on other devices."
                                   delegate:self
                          cancelButtonTitle:@"Cancel"
                          otherButtonTitles:@"Import", nil];
@@ -618,16 +618,16 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     if (![fileManager fileExistsAtPath:self.storeURL.path]) {
         
         NSURL *defaultDataURL = [NSURL fileURLWithPath:[[NSBundle mainBundle]
-                                                        pathForResource:@"DefaultData"
+                                                        pathForResource:@"RM-DefaultData"
                                                         ofType:@"sqlite"]];
         NSError *error;
         if (![fileManager copyItemAtURL:defaultDataURL
                                   toURL:self.storeURL
                                   error:&error]) {
-            NSLog(@"DefaultData.sqlite copy FAIL: %@", error.localizedDescription);
+            NSLog(@"RM-DefaultData.sqlite copy FAIL: %@", error.localizedDescription);
         }
         else {
-            NSLog(@"A copy of DefaultData.sqlite was set as the initial store for %@", self.storeURL.path);
+            NSLog(@"A copy of RM-DefaultData.sqlite was set as the initial store for %@", self.storeURL.path);
         }
     }
 }
@@ -666,61 +666,6 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     }];
 }
 
-#pragma mark – TEST DATA IMPORT (This code is Grocery Dude data specific)
-- (void)importGroceryDudeTestData {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    NSNumber *imported = [[NSUserDefaults standardUserDefaults] objectForKey:@"TestDataImport"];
-    
-    if (!imported.boolValue) {
-        NSLog(@"Importing test data...");
-        [_importContext performBlock:^{
-            
-            NSManagedObject *locationAtHome = [NSEntityDescription insertNewObjectForEntityForName:@"LocationAtHome"
-                                                                            inManagedObjectContext:_importContext];
-            NSManagedObject *locationAtShop = [NSEntityDescription insertNewObjectForEntityForName:@"LocationAtShop"
-                                                                            inManagedObjectContext:_importContext];
-            [locationAtHome setValue:@"Test Home Location" forKey:@"storedIn"];
-            [locationAtShop setValue:@"Test Shop Location" forKey:@"aisle"];
-            
-            for (int a = 1; a < 101; a++) {
-                
-                @autoreleasepool {
-                    
-                    // Insert Item
-                    NSManagedObject *item = [NSEntityDescription insertNewObjectForEntityForName:@"Item"
-                                                                          inManagedObjectContext:_importContext];
-                    [item setValue:[NSString stringWithFormat:@"Test Item %i",a] forKey:@"name"];
-                    [item setValue:locationAtHome forKey:@"locationAtHome"];
-                    [item setValue:locationAtShop forKey:@"locationAtShop"];
-                    
-                    // Insert Photo
-                    NSManagedObject *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Item_Photo"
-                                                                           inManagedObjectContext:_importContext];
-                    [photo setValue:UIImagePNGRepresentation([UIImage imageNamed:@"GroceryHead.png"])
-                             forKey:@"data"];
-                    
-                    // Relate Item and Photo
-                    [item setValue:photo forKey:@"photo"];
-                    
-                    NSLog(@"Inserting %@", [item valueForKey:@"name"]);
-                    [Faulter faultObjectWithID:photo.objectID inContext:_importContext];
-                    [Faulter faultObjectWithID:item.objectID  inContext:_importContext];
-                }
-            }
-            [_importContext reset];
-            
-            // ensure import was a one off
-            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES]
-                                                      forKey:@"TestDataImport"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }];
-    }
-    else {
-        NSLog(@"Skipped test data import");
-    }
-}
 
 #pragma mark - DELEGATE: UIAlertView
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -758,7 +703,6 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     NSMutableArray *attributes = [NSMutableArray new];
 
     // Select an attribute in each entity for uniqueness
-//warning Customize for your own data model. Only required when using deep copy (See Chapters 8 and 9)
     [entities addObject:@"Data_classification"];[attributes addObject:@"id"];
     [entities addObject:@"Threat"];[attributes addObject:@"id"];
     [entities addObject:@"Integrity_req"];[attributes addObject:@"id"];
@@ -774,6 +718,10 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     [entities addObject:@"Risk_matrix"];[attributes addObject:@"id"];
     [entities addObject:@"Risk_level"];[attributes addObject:@"id"];
     [entities addObject:@"Asset"];[attributes addObject:@"id"];
+    [entities addObject:@"Asset_photo"];[attributes addObject:@"data"];
+    [entities addObject:@"Owner_photo"];[attributes addObject:@"data"];
+    [entities addObject:@"Risk_group_photo"];[attributes addObject:@"data"];
+    [entities addObject:@"Site_photo"];[attributes addObject:@"data"];
 
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:attributes
                                                            forKeys:entities];
@@ -908,7 +856,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
                                                       error:&error];
     if (_iCloudStore) {
         NSLog(@"** The iCloud Store has been successfully configured at '%@' **", _iCloudStore.URL.path);
-        //[self confirmMergeWithiCloud];
+        [self confirmMergeWithiCloud];
         //[self destroyAlliCloudDataForThisApplication];
         return YES;
     }
@@ -981,6 +929,8 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     [[NSUserDefaults standardUserDefaults] synchronize]; // Ensure current value
+    NSUserDefaults *userDefs;
+    userDefs=[NSUserDefaults standardUserDefaults];
     if ([[[NSUserDefaults standardUserDefaults]
           objectForKey:@"iCloudEnabled"] boolValue]) {
         NSLog(@"** iCloud is ENABLED in Settings **");

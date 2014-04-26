@@ -1,12 +1,13 @@
 //
 //  Asset.m
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import "Asset.h"
+#import "Asset_photo.h"
 #import "Availability_req.h"
 #import "Business_process.h"
 #import "Data_classification.h"
@@ -21,7 +22,6 @@
 
 @dynamic age;
 @dynamic asset_custodian;
-@dynamic asset_photo;
 @dynamic code;
 @dynamic data_retention;
 @dynamic desc;
@@ -32,8 +32,10 @@
 @dynamic is_customer_confidential;
 @dynamic is_intimate_data;
 @dynamic is_personal_data;
+@dynamic orderingValue;
 @dynamic replacement_cost;
 @dynamic short_name;
+@dynamic thumbnail;
 @dynamic updated_at;
 @dynamic value_to_business;
 @dynamic availability_req;
@@ -41,6 +43,7 @@
 @dynamic data_classification;
 @dynamic integrity_req;
 @dynamic owner;
+@dynamic photo;
 @dynamic risk_group;
 @dynamic risks;
 @dynamic site;

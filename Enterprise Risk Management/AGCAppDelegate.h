@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataHelper.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 #pragma mark - Interface and Protocols
 
-@interface AGCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AGCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate>
 {
 #pragma mark - Instance Variables
     

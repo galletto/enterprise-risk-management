@@ -1,15 +1,15 @@
 //
 //  Risk_group.h
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Asset, Asset_care_criteria, Availability_req, Business_process, Data_classification, Integrity_req, Owner, Risk_level, Risk_matrix;
+@class Asset, Asset_care_criteria, Availability_req, Business_process, Data_classification, Integrity_req, Owner, Risk_group_photo, Risk_level, Risk_matrix;
 
 @interface Risk_group : NSManagedObject
 
@@ -18,8 +18,10 @@
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSString * created_by;
 @property (nonatomic, retain) NSString * desc;
-@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSNumber * orderingValue;
 @property (nonatomic, retain) NSString * short_name;
+@property (nonatomic, retain) id thumbnail;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) NSString * updated_by;
 @property (nonatomic, retain) Asset_care_criteria *asset_care_criteria;
@@ -29,6 +31,7 @@
 @property (nonatomic, retain) NSSet *data_classifications;
 @property (nonatomic, retain) NSSet *integrity_reqs;
 @property (nonatomic, retain) NSSet *owners;
+@property (nonatomic, retain) Risk_group_photo *photo;
 @property (nonatomic, retain) NSSet *risk_levels;
 @property (nonatomic, retain) NSSet *risk_matrixs;
 @end

@@ -1,8 +1,8 @@
 //
 //  Data_classification.h
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * disposal_of_electronic_information;
 @property (nonatomic, retain) NSString * disposal_of_physical_medium;
-@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * labelling;
 @property (nonatomic, retain) NSString * removable_media;
 @property (nonatomic, retain) NSString * short_name;

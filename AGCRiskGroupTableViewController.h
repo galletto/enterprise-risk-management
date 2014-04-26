@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 
-@interface AGCRiskGroupTableViewController : CoreDataTableViewController <UIActionSheetDelegate>
+@interface AGCRiskGroupTableViewController : CoreDataTableViewController <UIActionSheetDelegate, UITableViewDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) UIActionSheet *clearConfirmActionSheet;
+@property (strong, nonatomic) UIActionSheet *deleteConfirmActionSheet;
+@property (strong, nonatomic) NSIndexPath *deleteindexPath;
 
 @end

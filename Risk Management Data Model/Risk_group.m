@@ -1,8 +1,8 @@
 //
 //  Risk_group.m
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 #import "Data_classification.h"
 #import "Integrity_req.h"
 #import "Owner.h"
+#import "Risk_group_photo.h"
 #import "Risk_level.h"
 #import "Risk_matrix.h"
 
@@ -26,7 +27,9 @@
 @dynamic created_by;
 @dynamic desc;
 @dynamic id;
+@dynamic orderingValue;
 @dynamic short_name;
+@dynamic thumbnail;
 @dynamic updated_at;
 @dynamic updated_by;
 @dynamic asset_care_criteria;
@@ -36,6 +39,7 @@
 @dynamic data_classifications;
 @dynamic integrity_reqs;
 @dynamic owners;
+@dynamic photo;
 @dynamic risk_levels;
 @dynamic risk_matrixs;
 

@@ -1,8 +1,8 @@
 //
 //  Asset_care_criteria.h
-//  Enterprise Risk Management
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 25/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface Asset_care_criteria : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSNumber * is_business_confidential_critical;
 @property (nonatomic, retain) NSNumber * is_customer_confidential;
 @property (nonatomic, retain) NSNumber * is_intimate_data;

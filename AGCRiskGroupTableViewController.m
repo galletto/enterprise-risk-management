@@ -11,17 +11,14 @@
 #import "AGCRiskGroupViewController.h"
 #import "CoreDataHelper.h"
 #import "Deduplicator.h"
+#import "Thumbnailer.h"
 #import "AGCAppDelegate.h"
 #import "Risk_group.h"
 
-@interface AGCRiskGroupTableViewController ()
-
-@end
 
 @implementation AGCRiskGroupTableViewController
 
-
-#define debug 0
+#define debug 1
 
 #pragma mark - DATA
 - (void)configureFetch {
@@ -37,7 +34,8 @@
     [NSArray arrayWithObjects:
          [NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES],
          [NSSortDescriptor sortDescriptorWithKey:@"short_name" ascending:YES], nil];
-    [request setFetchBatchSize:50];
+    [request setFetchBatchSize:20];
+    
     self.frc =
     [[NSFetchedResultsController alloc] initWithFetchRequest:request
          managedObjectContext:base_de_datos.context
@@ -52,10 +50,30 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     [super viewDidAppear:animated];
-    CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
+    
+    // Create missing Thumbnails
+    CoreDataHelper *base_de_datos =
+    [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                                [NSSortDescriptor sortDescriptorWithKey:@"code"
+                                                              ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:@"short_name"
+                                                              ascending:YES],
+                                nil];
+    
+    [Thumbnailer createMissingThumbnailsForEntityName:@"Risk_group"
+                           withThumbnailAttributeName:@"thumbnail"
+                            withPhotoRelationshipName:@"photo"
+                               withPhotoAttributeName:@"data"
+                                  withSortDescriptors:sortDescriptors
+                                    withImportContext:base_de_datos.importContext];
+    
+    [base_de_datos.context performBlock:^{
+    CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
     [Deduplicator deDuplicateEntityWithName:@"Risk_group"
                     withUniqueAttributeName:@"id"
-                          withImportContext:cdh.importContext];
+                          withImportContext:base_de_datos.importContext];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -65,13 +83,15 @@
     [super viewDidLoad];
     [self configureFetch];
     [self performFetch];
-    self.clearConfirmActionSheet.delegate = self;
+    self.deleteConfirmActionSheet.delegate = self;
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(performFetch)
         name:@"SomethingChanged"
         object:nil];
-
+    
+    [self configureSearch];
 }
 
 
@@ -79,25 +99,41 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
+    
     static NSString *cellIdentifier = @"RiskGroupCell";
-    AGCRiskGroupTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    AGCRiskGroupTableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[AGCRiskGroupTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:cellIdentifier];
+    }
+    
     cell.accessoryType = UITableViewCellAccessoryDetailButton;
-    Risk_group *risk_group = [self.frc objectAtIndexPath:indexPath];
+    Risk_group *risk_group = [[self frcFromTV:tableView] objectAtIndexPath:indexPath];
     
-    NSMutableString *title = [NSMutableString stringWithFormat:@"%@%@ %@", risk_group.code, risk_group.short_name, risk_group.desc];
+    NSMutableString *title = [NSMutableString stringWithFormat:@"%@%@ %@",
+                              risk_group.code, risk_group.short_name, risk_group.desc];
+    
     [title replaceOccurrencesOfString:@"(null)"
-         withString:@""
-         options:0
-         range:NSMakeRange(0, [title length])];
+                           withString:@""
+                              options:0
+                                range:NSMakeRange(0, [title length])];
     
+    if(tableView == self.searchDisplayController.searchResultsTableView){
+        cell.textLabel.text=risk_group.short_name;
+    }
+    else
+    {
     cell.riskgroupcodelbl.text=risk_group.code;
     cell.riskgroupnamelbl.text=risk_group.short_name;
     cell.riskgroupdesclbl.text=risk_group.desc;
-    
- 
-    cell.riskgroupimagelbl.image=[UIImage imageNamed:@"riskgroupicon.png"];
+    cell.riskgroupimagelbl.image = [UIImage imageWithData:risk_group.thumbnail];
+    }
     
     return cell;
+
 }
 
 - (NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -113,10 +149,15 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Risk_group *deleteTarget = [self.frc objectAtIndexPath:indexPath];
-        [self.frc.managedObjectContext deleteObject:deleteTarget];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-          withRowAnimation:UITableViewRowAnimationFade];
+        //AGC pedir confirmacion del borrado
+        self.deleteindexPath=indexPath;
+        self.deleteConfirmActionSheet=
+                [[UIActionSheet alloc] initWithTitle:@"Delete entire Risk Group and all its dependent information: assets, risks... Are you really sure?"
+                                            delegate:self
+                                   cancelButtonTitle:@"Cancel"
+                              destructiveButtonTitle:@"Delete"
+                                   otherButtonTitles:nil, nil];
+        [self.deleteConfirmActionSheet showFromTabBar:self.navigationController.tabBarController.tabBar];
     }
     CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
     [cdh backgroundSaveContext];
@@ -130,7 +171,9 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor colorWithRed:0.1 green:1.0 blue:0.1 alpha:1.0];
-    
+ 
+    CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
+    [cdh backgroundSaveContext];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -164,6 +207,13 @@
             Risk_group *newRisk_group =
             [NSEntityDescription insertNewObjectForEntityForName:@"Risk_group"
                      inManagedObjectContext:base_de_datos.context];
+            NSUUID *uuid=[[NSUUID alloc] init];
+            NSString *key=[uuid UUIDString];
+            newRisk_group.id=key;
+            newRisk_group.created_at=[NSDate date];
+            newRisk_group.updated_at=[NSDate date];
+            newRisk_group.code=@"NewRiskGroup";
+            
             NSError *error = nil;
             if (![base_de_datos.context
                           obtainPermanentIDsForObjects:[NSArray arrayWithObject:newRisk_group]
@@ -171,32 +221,155 @@
                 NSLog(@"Couldn't obtain a permanent ID for object %@", error);
                 }
             riskgroupviewcontroller.selectedRiskGroupID = newRisk_group.objectID;
+            riskgroupviewcontroller.newRiskGroup=YES;
             }
     else {
         NSLog(@"Unidentified Segue Attempted!");
         }
 }
+
 - (void)tableView:(UITableView *)tableView
                     accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    AGCRiskGroupViewController *riskgroupviewcontroller =
-    [self.storyboard instantiateViewControllerWithIdentifier:@"RiskGroupViewController"];
-    riskgroupviewcontroller.selectedRiskGroupID =
-    [[self.frc objectAtIndexPath:indexPath] objectID];
+        AGCRiskGroupViewController *riskgroupviewcontroller =
+                [self.storyboard instantiateViewControllerWithIdentifier:@"RiskGroupViewController"];
+    
+        if(self.searchDisplayController.searchResultsTableView==tableView)
+                riskgroupviewcontroller.selectedRiskGroupID =
+                                                [[self.searchFRC objectAtIndexPath:indexPath] objectID];
+        else
+                riskgroupviewcontroller.selectedRiskGroupID =
+                                                [[self.frc objectAtIndexPath:indexPath] objectID];
+    
+    riskgroupviewcontroller.newRiskGroup=FALSE;
     [self.navigationController pushViewController:riskgroupviewcontroller animated:YES];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - INTERACTION
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet==self.deleteConfirmActionSheet){
+        if (buttonIndex==[actionSheet destructiveButtonIndex]){
+            [self deleteRiskGroup];
+        }
+        else{
+            if (buttonIndex==[actionSheet cancelButtonIndex]){
+                [actionSheet dismissWithClickedButtonIndex:[actionSheet cancelButtonIndex]
+                                                  animated:YES];
+            }
+        }
+        
+        }
+    }
+
+
+-(void) deleteRiskGroup {
+    Risk_group *deleteTarget = [self.frc objectAtIndexPath:self.deleteindexPath];
+    [self.frc.managedObjectContext deleteObject:deleteTarget];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:self.deleteindexPath]
+                          withRowAnimation:UITableViewRowAnimationFade];
 }
-*/
 
+// toggle edit mode
+- (IBAction)toggleEditingMode:(id)sender {
+    if (self.isEditing){
+        ((UIBarButtonItem*)sender).title=@"Edit";
+        [self setEditing:NO animated:YES];
+    }
+    else {
+        ((UIBarButtonItem*)sender).title=@"Done";
+        [self setEditing:YES animated:YES];
+    }
+}
+//reordering rows
+
+-(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    // pag 444 del bnr
+}
+
+#pragma mark - SEARCH
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    if (searchString.length > 0) {
+        NSLog(@"--> Searching for '%@'", searchString);
+        NSPredicate *predicate =
+        [NSPredicate predicateWithFormat:@"code CONTAINS[cd] %@ OR short_name CONTAINS[cd] %@ OR desc CONTAINS[cd] %@", searchString, searchString, searchString];
+        
+        NSArray *sortDescriptors =
+        [NSArray arrayWithObjects:
+         [NSSortDescriptor sortDescriptorWithKey:@"code"
+                                       ascending:YES],
+         [NSSortDescriptor sortDescriptorWithKey:@"short_name"
+                                       ascending:YES], nil];
+        
+        CoreDataHelper *base_de_datos =
+        [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
+        
+        [self reloadSearchFRCForPredicate:predicate
+                               withEntity:@"Risk_group"
+                                inContext:base_de_datos.context
+                      withSortDescriptors:sortDescriptors
+                   withSectionNameKeyPath:@"code"];
+    } else {
+        return NO;
+    }
+    return YES;
+}
+# pragma mark - Header of table view customization
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    float width = tableView.bounds.size.width;
+    int fontSize = 18;
+    int padding = 50;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, fontSize)];
+    view.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+    view.userInteractionEnabled = YES;
+    view.tag = section;
+    
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon #1 29 Rounded.png"]];
+    CGRect myFrame = image.frame;
+    myFrame.origin.x = 10;
+    myFrame.origin.y = 1;
+    image.frame=myFrame;
+    image.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [view addSubview:image];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(padding, 2, width - padding, fontSize)];
+    
+    myFrame = label.frame;
+    myFrame.origin.x = 50;
+    myFrame.origin.y = 8;
+    label.frame=myFrame;
+    
+    if(self.searchDisplayController.searchResultsTableView==tableView)
+        return nil;
+    else{
+        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:section];
+        
+            NSManagedObjectID *objectID= [[self.frc objectAtIndexPath:path] objectID];
+            
+            CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
+            
+            
+            Risk_group *risk_group = (Risk_group*)[base_de_datos.context existingObjectWithID:objectID
+                                                                                        error:nil];
+            label.text = risk_group.code;
+    }
+    
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor redColor];
+   // label.shadowColor = [UIColor darkGrayColor];
+    label.shadowOffset = CGSizeMake(0,1);
+    label.font = [UIFont boldSystemFontOfSize:fontSize];
+    
+    [view addSubview:label];
+    
+    return view;
+}
 @end
