@@ -155,7 +155,7 @@
         CoreDataHelper *base_de_datos =[CoreDataHelper sharedHelper];
         
         
-        //AGC-todo hay que conseguir cargar el primer owner por defecto
+        //AGC-todo hay que conseguir cargar el primer owner por defecto pero no funciona
         NSFetchRequest *request =
         [NSFetchRequest fetchRequestWithEntityName:@"Owner"];
         

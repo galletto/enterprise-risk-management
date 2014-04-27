@@ -116,6 +116,9 @@
     
     //Set the RightViewController as the left's delegate.
     self.delegate= rightViewController;
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.delegate selectedOwner:[[self.frc objectAtIndexPath:path] objectID]];
 
 }
 
@@ -193,7 +196,6 @@
     
 
     if (self.delegate) {
-        [self.delegate selectedOwner:[[self.frc objectAtIndexPath:indexPath] objectID]];
         if(self.searchDisplayController.searchResultsTableView==tableView)
             [self.delegate selectedOwner:[[self.searchFRC objectAtIndexPath:indexPath] objectID]];
         else
@@ -270,6 +272,7 @@
     [self.frc.managedObjectContext deleteObject:deleteTarget];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:self.deleteindexPath]
                           withRowAnimation:UITableViewRowAnimationFade];
+    [self.delegate selectedOwner:nil];
 }
 - (IBAction)newOwner:(UIBarButtonItem *)sender {
     if (debug==1) {
@@ -386,7 +389,7 @@
     if(self.searchDisplayController.searchResultsTableView==tableView)
         return nil;
     else{
-        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:section];
+            NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:section];
         
             NSManagedObjectID *objectID= [[self.frc objectAtIndexPath:path] objectID];
             
