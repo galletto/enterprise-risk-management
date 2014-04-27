@@ -150,12 +150,37 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
+
+    if (self.selectedOwnerID==nil){
+        CoreDataHelper *base_de_datos =[CoreDataHelper sharedHelper];
+        
+        
+        //AGC-todo hay que conseguir cargar el primer owner por defecto
+        NSFetchRequest *request =
+        [NSFetchRequest fetchRequestWithEntityName:@"Owner"];
+        
+        request.sortDescriptors =
+        [NSArray arrayWithObjects:
+         [NSSortDescriptor sortDescriptorWithKey:@"surname" ascending:YES],
+         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES], nil];
+        [request setFetchBatchSize:20];
+        
+        NSFetchedResultsController *frc =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                            managedObjectContext:base_de_datos.context
+                                              sectionNameKeyPath:@"surname"
+                                                       cacheName:nil];
+        
+        NSIndexPath *primerPath= [NSIndexPath indexPathForRow:0 inSection:0];
+        self.selectedOwnerID=[[frc objectAtIndexPath:primerPath] objectID];
+    }
+    
     if (self.selectedOwnerID) {
         CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
        
         NSError *errordb=nil;
-       Owner *owner = (Owner *)[base_de_datos.context existingObjectWithID:self.selectedOwnerID
-                                                                     error:&errordb];
+        Owner *owner = (Owner *)[base_de_datos.context existingObjectWithID:self.selectedOwnerID
+                                                                      error:&errordb];
         NSLog(@" %@", errordb);
         owner.updated_at= [NSDate date];
         if([owner.name isEqualToString:@""]) self.OwnerNameField.text=@"NewOwner";
@@ -172,7 +197,10 @@
         
         [self checkCamera];
     }
-    else self.OwnerNameField.text=@"NewOwner";
+    
+    if (self.selectedOwnerID==nil) {
+     self.OwnerNameField.text=@"NewOwner";
+    }
     
 }
 - (void)viewDidLoad {

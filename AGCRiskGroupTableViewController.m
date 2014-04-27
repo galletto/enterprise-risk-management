@@ -19,7 +19,7 @@
 
 @implementation AGCRiskGroupTableViewController
 
-#define debug 1
+#define debug 0
 
 #pragma mark - DATA
 - (void)configureFetch {
@@ -150,7 +150,7 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //AGC pedir confirmacion del borrado
+        // AGC pedir confirmacion del borrado
         self.deleteindexPath=indexPath;
         self.deleteConfirmActionSheet=
                 [[UIActionSheet alloc] initWithTitle:@"Delete entire Risk Group and all its dependent information: assets, risks... Are you really sure?"

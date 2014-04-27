@@ -31,7 +31,7 @@
 
 @implementation AGCRiskGroupViewController
 
-#define debug 1
+#define debug 0
 
 #pragma mark - INTERACTION
 - (IBAction)done:(id)sender {

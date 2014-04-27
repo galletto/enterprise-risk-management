@@ -97,6 +97,26 @@
     
     [self configureSearch];
     
+    ///AGC-todo
+    //Grab a reference to the UISplitViewController
+    UISplitViewController *splitViewController = (UISplitViewController *) self.parentViewController.parentViewController;
+    
+    //Grab a reference to the RightViewController and get the first monster in the list.
+    AGCOwnerViewController *rightViewController  = [splitViewController.viewControllers objectAtIndex:1];
+   
+    //Grab a reference to the RightViewController and set it as the SVC's delegate.
+    splitViewController.delegate = rightViewController;
+    
+    //carga el owner inicial
+    NSIndexPath *primerPath= [NSIndexPath indexPathForRow:0 inSection:0];
+    NSManagedObjectID *firstOwnerID = [[self.frc objectAtIndexPath:primerPath] objectID];
+    
+    //Set it as the RightViewController's monster.
+    [self.delegate selectedOwner:firstOwnerID];
+    
+    //Set the RightViewController as the left's delegate.
+    self.delegate= rightViewController;
+
 }
 
 
@@ -179,8 +199,6 @@
         else
             [self.delegate selectedOwner:[[self.frc objectAtIndexPath:indexPath] objectID]];
     }
-    
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
