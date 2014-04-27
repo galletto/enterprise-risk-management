@@ -48,6 +48,8 @@
 		279A85F7190C164D006616D2 /* AGCOwnerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A85F6190C164D006616D2 /* AGCOwnerTableViewController.m */; };
 		279A85FA190C3C27006616D2 /* AGCOwnerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A85F9190C3C27006616D2 /* AGCOwnerTableViewCell.m */; };
 		279A85FD190C4ABA006616D2 /* AGCOwnersSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A85FC190C4ABA006616D2 /* AGCOwnersSplitViewController.m */; };
+		279A863E190D60AF006616D2 /* AGCGlobalVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A863D190D60AF006616D2 /* AGCGlobalVariables.m */; };
+		279A8642190D7C71006616D2 /* the-boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 279A8641190D7C71006616D2 /* the-boss.png */; };
 		27B0D03618F88153003273E0 /* ERM_DBModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27B0D03318F88153003273E0 /* ERM_DBModel1.xcdatamodeld */; };
 		27B0D03918F8859C003273E0 /* AGCRiskGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0D03818F8859C003273E0 /* AGCRiskGroupTableViewController.m */; };
 		27B0D04518F889D6003273E0 /* Icon #1 128 Rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B0D03B18F889D5003273E0 /* Icon #1 128 Rounded.png */; };
@@ -175,6 +177,10 @@
 		279A85F9190C3C27006616D2 /* AGCOwnerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCOwnerTableViewCell.m; sourceTree = "<group>"; };
 		279A85FB190C4ABA006616D2 /* AGCOwnersSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCOwnersSplitViewController.h; sourceTree = "<group>"; };
 		279A85FC190C4ABA006616D2 /* AGCOwnersSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCOwnersSplitViewController.m; sourceTree = "<group>"; };
+		279A863B190CF83C006616D2 /* AGCOwnerSelectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGCOwnerSelectionDelegate.h; sourceTree = "<group>"; };
+		279A863C190D60AF006616D2 /* AGCGlobalVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCGlobalVariables.h; sourceTree = "<group>"; };
+		279A863D190D60AF006616D2 /* AGCGlobalVariables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCGlobalVariables.m; sourceTree = "<group>"; };
+		279A8641190D7C71006616D2 /* the-boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "the-boss.png"; sourceTree = "<group>"; };
 		27B0D03418F88153003273E0 /* ERM_DBModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ERM_DBModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		27B0D03518F88153003273E0 /* ERM_DBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ERM_DBModel.xcdatamodel; sourceTree = "<group>"; };
 		27B0D03718F8859C003273E0 /* AGCRiskGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCRiskGroupTableViewController.h; sourceTree = "<group>"; };
@@ -272,6 +278,7 @@
 		27B0D03A18F889D5003273E0 /* Enterprise Risk Management Icons */ = {
 			isa = PBXGroup;
 			children = (
+				279A8641190D7C71006616D2 /* the-boss.png */,
 				279A85E3190BE68C006616D2 /* album.png */,
 				279A85DF190BE58A006616D2 /* camera.png */,
 				2791EFDD18F98FFC00B3CCD8 /* RiskAssessmentChart2.png */,
@@ -299,13 +306,13 @@
 			name = "Risk Assessment Chart";
 			sourceTree = "<group>";
 		};
-		27E17BF218FDB4E400BCDF24 /* AGCAssestsSplitViewController */ = {
+		27E17BF218FDB4E400BCDF24 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				27E17BEF18FDB4DE00BCDF24 /* AGCAssetsSplitViewController.h */,
 				27E17BF018FDB4DE00BCDF24 /* AGCAssetsSplitViewController.m */,
 			);
-			name = AGCAssestsSplitViewController;
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		27E17BFA18FDC6A300BCDF24 /* Storyboards */ = {
@@ -319,20 +326,21 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
-		27E17BFF18FDC94800BCDF24 /* AGCRisksSplitViewController */ = {
+		27E17BFF18FDC94800BCDF24 /* Risks */ = {
 			isa = PBXGroup;
 			children = (
 				27E17C0018FDC99200BCDF24 /* AGCRisksSplitViewController.h */,
 				27E17C0118FDC99200BCDF24 /* AGCRisksSplitViewController.m */,
 			);
-			name = AGCRisksSplitViewController;
+			name = Risks;
 			sourceTree = "<group>";
 		};
-		27E17C0318FDCCB700BCDF24 /* AGCOwnersSplitViewController */ = {
+		27E17C0318FDCCB700BCDF24 /* Owners */ = {
 			isa = PBXGroup;
 			children = (
 				279A85FB190C4ABA006616D2 /* AGCOwnersSplitViewController.h */,
 				279A85FC190C4ABA006616D2 /* AGCOwnersSplitViewController.m */,
+				279A863B190CF83C006616D2 /* AGCOwnerSelectionDelegate.h */,
 				279A85F5190C164D006616D2 /* AGCOwnerTableViewController.h */,
 				279A85F6190C164D006616D2 /* AGCOwnerTableViewController.m */,
 				279A85F8190C3C27006616D2 /* AGCOwnerTableViewCell.h */,
@@ -340,7 +348,7 @@
 				279A85E9190C0484006616D2 /* AGCOwnerViewController.h */,
 				279A85EA190C0484006616D2 /* AGCOwnerViewController.m */,
 			);
-			name = AGCOwnersSplitViewController;
+			name = Owners;
 			sourceTree = "<group>";
 		};
 		27E3327318F86A1B00988B1A = {
@@ -349,14 +357,14 @@
 				27E17BFA18FDC6A300BCDF24 /* Storyboards */,
 				2791EFE718FA62ED00B3CCD8 /* Enterprise Risk Management.entitlements */,
 				2791EFDA18F9744100B3CCD8 /* Risk Groups */,
+				27E17C0318FDCCB700BCDF24 /* Owners */,
 				279A85E5190BF71B006616D2 /* Config */,
 				27B631D818FD348E0090BCF9 /* Risk Assessment Chart */,
-				27E17BF218FDB4E400BCDF24 /* AGCAssestsSplitViewController */,
-				27E17BFF18FDC94800BCDF24 /* AGCRisksSplitViewController */,
-				27E17C0318FDCCB700BCDF24 /* AGCOwnersSplitViewController */,
-				27E3328718F86A1B00988B1A /* risk manager - AppDelegate */,
-				27F07E6F18F86CBE00C9DAC6 /* risk manager - Core Data */,
-				27F07E7618F86CCD00C9DAC6 /* risk manager - Data Model */,
+				27E17BF218FDB4E400BCDF24 /* Assets */,
+				27E17BFF18FDC94800BCDF24 /* Risks */,
+				27E3328718F86A1B00988B1A /* AppDelegate */,
+				27F07E6F18F86CBE00C9DAC6 /* Core Data */,
+				27F07E7618F86CCD00C9DAC6 /* Data Model */,
 				27E332A418F86A1B00988B1A /* risk manager - Tests */,
 				27E3327E18F86A1B00988B1A /* Frameworks */,
 				27E3327D18F86A1B00988B1A /* Products */,
@@ -384,9 +392,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		27E3328718F86A1B00988B1A /* risk manager - AppDelegate */ = {
+		27E3328718F86A1B00988B1A /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				279A863C190D60AF006616D2 /* AGCGlobalVariables.h */,
+				279A863D190D60AF006616D2 /* AGCGlobalVariables.m */,
 				27E17BF918FDC03A00BCDF24 /* AGCStoryBoardLinkSource.h */,
 				27E17BF518FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.h */,
 				27E17BF618FDBE7F00BCDF24 /* AGCStoryBoardLinkViewController.m */,
@@ -397,7 +407,7 @@
 				27E3329618F86A1B00988B1A /* Images.xcassets */,
 				27E3328818F86A1B00988B1A /* Supporting Files */,
 			);
-			name = "risk manager - AppDelegate";
+			name = AppDelegate;
 			path = "Enterprise Risk Management";
 			sourceTree = "<group>";
 		};
@@ -434,7 +444,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		27F07E6F18F86CBE00C9DAC6 /* risk manager - Core Data */ = {
+		27F07E6F18F86CBE00C9DAC6 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
 				271E95FE18FC67B0000D9E29 /* CoreDataHelper.h */,
@@ -452,11 +462,11 @@
 				271E960A18FC67B0000D9E29 /* Thumbnailer.h */,
 				271E960B18FC67B0000D9E29 /* Thumbnailer.m */,
 			);
-			name = "risk manager - Core Data";
+			name = "Core Data";
 			path = "Risk Management Core Data";
 			sourceTree = "<group>";
 		};
-		27F07E7618F86CCD00C9DAC6 /* risk manager - Data Model */ = {
+		27F07E7618F86CCD00C9DAC6 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
 				27B0D03318F88153003273E0 /* ERM_DBModel1.xcdatamodeld */,
@@ -499,7 +509,7 @@
 				273AD32F190ADE7300923CF9 /* Risk_matrix.h */,
 				273AD330190ADE7300923CF9 /* Risk_matrix.m */,
 			);
-			name = "risk manager - Data Model";
+			name = "Data Model";
 			path = "Risk Management Data Model";
 			sourceTree = "<group>";
 		};
@@ -598,6 +608,7 @@
 				2716FBFC18F86F45002D0E94 /* main.storyboard in Resources */,
 				2791EFD918F90C2A00B3CCD8 /* riskgroupicon.png in Resources */,
 				27B0D04C18F889D6003273E0 /* Icon #1 512.png in Resources */,
+				279A8642190D7C71006616D2 /* the-boss.png in Resources */,
 				27B0D04918F889D6003273E0 /* Icon #1 40 Rounded.png in Resources */,
 				27E3329718F86A1B00988B1A /* Images.xcassets in Resources */,
 				2764A5B319085622001E5696 /* Settings.bundle in Resources */,
@@ -664,6 +675,7 @@
 				273AD349190ADE7400923CF9 /* Owner.m in Sources */,
 				273AD367190ADE7500923CF9 /* Risk_group_photo.m in Sources */,
 				273AD35E190ADE7400923CF9 /* Risk_group.m in Sources */,
+				279A863E190D60AF006616D2 /* AGCGlobalVariables.m in Sources */,
 				273AD34C190ADE7400923CF9 /* Asset_care_criteria.m in Sources */,
 				279A85DE190BA5AA006616D2 /* AGCDatePickerViewController.m in Sources */,
 				279A85FA190C3C27006616D2 /* AGCOwnerTableViewCell.m in Sources */,

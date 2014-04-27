@@ -11,7 +11,7 @@
 
 
 /**
- * Basically, what this class does is create a linked scene, put it in a
+ * What this class does is create a linked scene, put it in a
  * containter view controller, and copy all the linked scene's properties into
  * the container view controller.
  */

@@ -9,7 +9,6 @@
 #import "AGCStoryBoardLinkViewController.h"
 #import "AGCStoryBoardLinkSource.h"
 
-
 @interface AGCStoryBoardLinkViewController ()
 
 @property (nonatomic, strong, readwrite) UIViewController * scene;
@@ -143,9 +142,10 @@
     self.extendedLayoutIncludesOpaqueBars = scene.extendedLayoutIncludesOpaqueBars;
     self.modalPresentationCapturesStatusBarAppearance = scene.modalPresentationCapturesStatusBarAppearance;
     self.transitioningDelegate = scene.transitioningDelegate;
+
 }
 
-- (NSString *)vertialConstraintString {
+- (NSString *)verticalConstraintString {
     
     // Defaults to using top and bottom layout guides.
     BOOL needsTopLayoutGuide    = self.needsTopLayoutGuide;
@@ -193,10 +193,11 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[self vertialConstraintString]
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[self verticalConstraintString]
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

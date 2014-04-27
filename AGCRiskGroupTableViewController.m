@@ -9,6 +9,7 @@
 #import "AGCRiskGroupTableViewController.h"
 #import "AGCRiskGroupTableViewCell.h"
 #import "AGCRiskGroupViewController.h"
+#import "AGCGlobalVariables.h"
 #import "CoreDataHelper.h"
 #import "Deduplicator.h"
 #import "Thumbnailer.h"
@@ -221,6 +222,9 @@
                 NSLog(@"Couldn't obtain a permanent ID for object %@", error);
                 }
             riskgroupviewcontroller.selectedRiskGroupID = newRisk_group.objectID;
+            AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+            globalVariables.selectedRiskGroupID=newRisk_group.objectID;
+            globalVariables.selectedRiskGroupUUID=key;
             riskgroupviewcontroller.newRiskGroup=YES;
             }
     else {
@@ -236,13 +240,19 @@
         AGCRiskGroupViewController *riskgroupviewcontroller =
                 [self.storyboard instantiateViewControllerWithIdentifier:@"RiskGroupViewController"];
     
-        if(self.searchDisplayController.searchResultsTableView==tableView)
+    if(self.searchDisplayController.searchResultsTableView==tableView){
                 riskgroupviewcontroller.selectedRiskGroupID =
                                                 [[self.searchFRC objectAtIndexPath:indexPath] objectID];
-        else
+                AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+                globalVariables.selectedRiskGroupID=riskgroupviewcontroller.selectedRiskGroupID;
+                globalVariables.selectedRiskGroupUUID= ((Risk_group *)[self.searchFRC objectAtIndexPath:indexPath]).id;
+    }else{
                 riskgroupviewcontroller.selectedRiskGroupID =
                                                 [[self.frc objectAtIndexPath:indexPath] objectID];
-    
+                AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+                globalVariables.selectedRiskGroupID=riskgroupviewcontroller.selectedRiskGroupID;
+                globalVariables.selectedRiskGroupUUID= ((Risk_group *)[self.frc objectAtIndexPath:indexPath]).id;
+    }
     riskgroupviewcontroller.newRiskGroup=FALSE;
     [self.navigationController pushViewController:riskgroupviewcontroller animated:YES];
 }

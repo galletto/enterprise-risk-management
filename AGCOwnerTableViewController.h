@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 
+@class Owner;
+#import "AGCOwnerSelectionDelegate.h"
 
 @interface AGCOwnerTableViewController : CoreDataTableViewController <UIActionSheetDelegate, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) UIActionSheet *deleteConfirmActionSheet;
 @property (strong, nonatomic) NSIndexPath *deleteindexPath;
 - (IBAction)newOwner:(UIBarButtonItem *)sender;
-
+@property (nonatomic, assign) id<AGCOwnerSelectionDelegate> delegate;
 
 @end
+

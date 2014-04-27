@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Owner;
+#import "AGCOwnerSelectionDelegate.h"
 
-@interface AGCOwnerViewController :  UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
+@interface AGCOwnerViewController :  UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate, UISplitViewControllerDelegate, AGCOwnerSelectionDelegate>
 
 @property (nonatomic) BOOL newOwner;
 @property (strong, nonatomic) NSManagedObjectID *selectedOwnerID;
@@ -17,7 +19,5 @@
 @property (strong, nonatomic) UIPopoverController *datePickerController;
 
 @end
-
-
 
 

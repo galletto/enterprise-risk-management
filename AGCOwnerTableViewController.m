@@ -9,16 +9,19 @@
 #import "AGCOwnerTableViewController.h"
 #import "AGCOwnerTableViewCell.h"
 #import "AGCOwnerViewController.h"
+#import "AGCGlobalVariables.h"
 #import "CoreDataHelper.h"
 #import "Deduplicator.h"
 #import "Thumbnailer.h"
 #import "AGCAppDelegate.h"
 #import "Owner.h"
+#import "Risk_group.h"
 
 
 @implementation AGCOwnerTableViewController
-
 #define debug 1
+
+@synthesize delegate;
 
 #pragma mark - DATA
 - (void)configureFetch {
@@ -32,14 +35,14 @@
     
     request.sortDescriptors =
     [NSArray arrayWithObjects:
-         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
-         [NSSortDescriptor sortDescriptorWithKey:@"surname" ascending:YES], nil];
+         [NSSortDescriptor sortDescriptorWithKey:@"surname" ascending:YES],
+         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES], nil];
     [request setFetchBatchSize:20];
     
     self.frc =
     [[NSFetchedResultsController alloc] initWithFetchRequest:request
          managedObjectContext:base_de_datos.context
-         sectionNameKeyPath:@"name"
+         sectionNameKeyPath:@"surname"
          cacheName:nil];
     self.frc.delegate = self;
 }
@@ -55,9 +58,9 @@
     CoreDataHelper *base_de_datos =
     [(AGCAppDelegate *)[[UIApplication sharedApplication] delegate] base_de_datos];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:
-                                [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                              ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"surname"
+                                                              ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:@"name"
                                                               ascending:YES],
                                 nil];
     
@@ -81,7 +84,6 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
         }
     [super viewDidLoad];
-   // self.detailViewController = (AGCOwnerViewController *) [[self.splitViewController.viewControllers lastObject] topViewController];
     
     [self configureFetch];
     [self performFetch];
@@ -94,6 +96,7 @@
         object:nil];
     
     [self configureSearch];
+    
 }
 
 
@@ -112,16 +115,7 @@
                                       reuseIdentifier:cellIdentifier];
     }
     
-    cell.accessoryType = UITableViewCellAccessoryDetailButton;
     Owner *owner = [[self frcFromTV:tableView] objectAtIndexPath:indexPath];
-    
-    NSMutableString *title = [NSMutableString stringWithFormat:@"%@ %@ %@",
-                              owner.name, owner.surname, owner.email];
-    
-    [title replaceOccurrencesOfString:@"(null)"
-                           withString:@""
-                              options:0
-                                range:NSMakeRange(0, [title length])];
     
     if(tableView == self.searchDisplayController.searchResultsTableView){
         cell.textLabel.text=owner.surname;
@@ -176,6 +170,17 @@
 
     CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
     [cdh backgroundSaveContext];
+    
+
+    if (self.delegate) {
+        [self.delegate selectedOwner:[[self.frc objectAtIndexPath:indexPath] objectID]];
+        if(self.searchDisplayController.searchResultsTableView==tableView)
+            [self.delegate selectedOwner:[[self.searchFRC objectAtIndexPath:indexPath] objectID]];
+        else
+            [self.delegate selectedOwner:[[self.frc objectAtIndexPath:indexPath] objectID]];
+    }
+    
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -198,14 +203,11 @@
 
 #pragma mark - Segue
 
-
-
 - (void)tableView:(UITableView *)tableView
                     accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    
     
     AGCOwnerViewController *ownerviewcontroller =
                 [self.storyboard instantiateViewControllerWithIdentifier:@"OwnerViewController"];
@@ -224,6 +226,9 @@
 #pragma mark - INTERACTION
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
     if (actionSheet==self.deleteConfirmActionSheet){
         if (buttonIndex==[actionSheet destructiveButtonIndex]){
             [self deleteOwner];
@@ -240,12 +245,18 @@
 
 
 -(void) deleteOwner {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
     Owner *deleteTarget = [self.frc objectAtIndexPath:self.deleteindexPath];
     [self.frc.managedObjectContext deleteObject:deleteTarget];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:self.deleteindexPath]
                           withRowAnimation:UITableViewRowAnimationFade];
 }
 - (IBAction)newOwner:(UIBarButtonItem *)sender {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
     CoreDataHelper *base_de_datos =[CoreDataHelper sharedHelper];
     Owner *newOwner =
     [NSEntityDescription insertNewObjectForEntityForName:@"Owner"
@@ -255,20 +266,28 @@
     newOwner.id=key;
     newOwner.updated_at=[NSDate date];
     newOwner.name=@"NewOwner";
-    
     NSError *error = nil;
     if (![base_de_datos.context
           obtainPermanentIDsForObjects:[NSArray arrayWithObject:newOwner]
           error:&error]) {
         NSLog(@"Couldn't obtain a permanent ID for object %@", error);
     }
-//    riskgroupviewcontroller.selectedRiskGroupID = newRisk_group.objectID;
-//    riskgroupviewcontroller.newRiskGroup=YES;
+    AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+    // AGC hay que poner bien la relación dependiendo de risk_group
+    //   newOwner.risk_group=(Risk_group *)globalVariables.selectedRiskGroupID;
+    
+    // select and refresh the detail view
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
     
 }
 
 // toggle edit mode
 - (IBAction)toggleEditingMode:(id)sender {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
     if (self.isEditing){
         ((UIBarButtonItem*)sender).title=@"Edit";
         [self setEditing:NO animated:YES];
@@ -296,9 +315,9 @@
         
         NSArray *sortDescriptors =
         [NSArray arrayWithObjects:
-         [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                       ascending:YES],
          [NSSortDescriptor sortDescriptorWithKey:@"surname"
+                                       ascending:YES],
+         [NSSortDescriptor sortDescriptorWithKey:@"name"
                                        ascending:YES], nil];
         
         CoreDataHelper *base_de_datos =
@@ -308,7 +327,7 @@
                                withEntity:@"Owner"
                                 inContext:base_de_datos.context
                       withSortDescriptors:sortDescriptors
-                   withSectionNameKeyPath:@"name"];
+                   withSectionNameKeyPath:@"surname"];
     } else {
         return NO;
     }
@@ -317,8 +336,12 @@
 # pragma mark - Header of table view customization
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    
     float width = tableView.bounds.size.width;
-    int fontSize = 18;
+    int fontSize = 12;
     int padding = 50;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, fontSize)];
@@ -326,7 +349,7 @@
     view.userInteractionEnabled = YES;
     view.tag = section;
     
-    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon #1 29 Rounded.png"]];
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"the-boss.png"]];
     CGRect myFrame = image.frame;
     myFrame.origin.x = 10;
     myFrame.origin.y = 1;
@@ -354,12 +377,11 @@
             
             Owner *owner = (Owner*)[base_de_datos.context existingObjectWithID:objectID
                                                                                         error:nil];
-            label.text = owner.name;
+            label.text = owner.surname;
     }
     
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor redColor];
-   // label.shadowColor = [UIColor darkGrayColor];
     label.shadowOffset = CGSizeMake(0,1);
     label.font = [UIFont boldSystemFontOfSize:fontSize];
     
@@ -367,5 +389,8 @@
     
     return view;
 }
+
+
+
 
 @end

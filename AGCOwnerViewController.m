@@ -33,26 +33,10 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    
     [self hideKeyboard];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)cancel:(id)sender {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    [self hideKeyboard];
-    if (_newOwner)
-    {
-        CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
-        Owner *owner =
-        (Owner*)[base_de_datos.context existingObjectWithID:self.selectedOwnerID
-                                                           error:nil];
-        [base_de_datos.context deleteObject:owner];
-    }
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 - (void)hideKeyboardWhenBackgroundIsTapped {
     if (debug==1) {
@@ -117,7 +101,6 @@
             self.OwnerNameField.text = @"";
         }
     }
-    
     _activeField=textField;
 }
 
@@ -169,9 +152,11 @@
     }
     if (self.selectedOwnerID) {
         CoreDataHelper *base_de_datos = [CoreDataHelper sharedHelper];
-        Owner *owner =
-        (Owner*)[base_de_datos.context existingObjectWithID:self.selectedOwnerID
-                                                           error:nil];
+       
+        NSError *errordb=nil;
+       Owner *owner = (Owner *)[base_de_datos.context existingObjectWithID:self.selectedOwnerID
+                                                                     error:&errordb];
+        NSLog(@" %@", errordb);
         owner.updated_at= [NSDate date];
         if([owner.name isEqualToString:@""]) self.OwnerNameField.text=@"NewOwner";
         else self.OwnerNameField.text = owner.name;
@@ -187,7 +172,7 @@
         
         [self checkCamera];
     }
-    else self.OwnerNameField.text=@"NewRiskGroup";
+    else self.OwnerNameField.text=@"NewOwner";
     
 }
 - (void)viewDidLoad {
@@ -369,4 +354,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     }
     
 }
+
+
+#pragma mark - Owner Selection Delegate
+-(void)selectedOwner:(NSManagedObjectID *)newOwnerID
+{
+    
+    self.selectedOwnerID=newOwnerID;
+    [self refreshInterface];
+    
+}
+
 @end

@@ -59,14 +59,12 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    return [[[[self frcFromTV:tableView] sections] objectAtIndex:section] name];
+ //   return [[[[self frcFromTV:tableView] sections] objectAtIndex:section] name];
     return @"";
 }
 -(CGFloat) tableView: (UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 31;
 }
-
-
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
