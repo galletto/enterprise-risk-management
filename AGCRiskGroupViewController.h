@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AGCDatePickerViewController.h"
 
-@interface AGCRiskGroupViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
+@interface AGCRiskGroupViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic) BOOL newRiskGroup;
 @property (strong, nonatomic) NSManagedObjectID *selectedRiskGroupID;

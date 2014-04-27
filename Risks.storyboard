@@ -84,26 +84,6 @@
             </objects>
             <point key="canvasLocation" x="-1114" y="-861"/>
         </scene>
-        <!--View Controller - Risk Chart-->
-        <scene sceneID="Ye9-au-pBU">
-            <objects>
-                <viewController title="Risk Chart" id="hCN-lx-ccD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TO5-lO-pPF"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ydy-1p-gv7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vlM-3R-KGs">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vIs-Pf-O64" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1217" y="211"/>
-        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -1,18 +1,21 @@
 //
-//  AGCParametersSplitViewController.m
-//  Enterprise Risk Management
+//  AGCOwnersSplitViewController.m
+//  risk manager
 //
-//  Created by Alessandro on 15/04/14.
+//  Created by Alessandro on 26/04/14.
 //  Copyright (c) 2014 ALARCATX. All rights reserved.
 //
 
-#import "AGCParametersSplitViewController.h"
+#import "AGCOwnersSplitViewController.h"
+#import "AGCOwnerTableViewController.h"
+#import "AGCOwnerViewController.h"
 
-@interface AGCParametersSplitViewController ()
+
+@interface AGCOwnersSplitViewController ()
 
 @end
 
-@implementation AGCParametersSplitViewController
+@implementation AGCOwnersSplitViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

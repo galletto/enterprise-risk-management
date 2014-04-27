@@ -76,6 +76,7 @@
     
     sleep(1);
     [[CoreDataHelper sharedHelper] ensureAppropriateStoreIsLoaded];
+    
     return YES;
 }
 
