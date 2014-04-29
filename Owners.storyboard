@@ -124,7 +124,7 @@
             </objects>
             <point key="canvasLocation" x="1299" y="-1386"/>
         </scene>
-        <!--Owner Table View Controller - Root View Controller-->
+        <!--Owner Table View Controller - Title-->
         <scene sceneID="ZBa-jI-wog">
             <objects>
                 <tableViewController storyboardIdentifier="OwnerTableViewController" clearsSelectionOnViewWillAppear="NO" id="eCz-fS-GEu" customClass="AGCOwnerTableViewController" sceneMemberID="viewController">
@@ -172,7 +172,7 @@
                             <outlet property="delegate" destination="eCz-fS-GEu" id="5Jg-wU-i7k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="KZR-0w-FLo">
+                    <navigationItem key="navigationItem" title="Title" id="KZR-0w-FLo">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="TzK-dB-6lN">
                             <connections>
                                 <action selector="toggleEditingMode:" destination="eCz-fS-GEu" id="Hx2-0p-eiy"/>
@@ -184,6 +184,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="titleLabel" destination="KZR-0w-FLo" id="IXO-cK-gb4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUa-8D-o0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

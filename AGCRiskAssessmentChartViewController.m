@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AGCRiskAssessmentChartViewController.h"
 #import "AGCAssetsSplitViewController.h"
+#import "AGCGlobalVariables.h"
 #import "AGCAppDelegate.h"
 #import "Risk_group.h"
 
@@ -65,6 +66,9 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
+    AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+    self.titleLabel.title=globalVariables.selectedRiskGroupTitle;
+    
     [self refreshInterface];
 }
 

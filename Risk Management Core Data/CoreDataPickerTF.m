@@ -12,7 +12,7 @@
 
 @implementation CoreDataPickerTF
 
-#define debug 0
+#define debug 1
 
 #pragma mark - DELEGATE & DATASOURCE: UIPickerView
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

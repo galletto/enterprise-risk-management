@@ -11,5 +11,6 @@
 @interface AGCRiskAssessmentChartViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectID *selectedRiskGroupID;
+@property (strong, nonatomic) IBOutlet UINavigationItem *titleLabel;
 
 @end

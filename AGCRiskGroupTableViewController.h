@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) UIActionSheet *deleteConfirmActionSheet;
 @property (strong, nonatomic) NSIndexPath *deleteindexPath;
+@property (strong, nonatomic) NSIndexPath *selectedindexPath;
 
 @end

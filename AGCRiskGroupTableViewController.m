@@ -16,10 +16,10 @@
 #import "AGCAppDelegate.h"
 #import "Risk_group.h"
 
-
 @implementation AGCRiskGroupTableViewController
 
-#define debug 0
+
+#define debug 1
 
 #pragma mark - DATA
 - (void)configureFetch {
@@ -75,6 +75,12 @@
                     withUniqueAttributeName:@"id"
                           withImportContext:base_de_datos.importContext];
     }];
+    
+    // Selected cell goes green
+    if (self.selectedindexPath!=nil){
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.selectedindexPath];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.8 green:1.0 blue:0.93 alpha:1.0];
+    }
 }
 
 - (void)viewDidLoad {
@@ -114,14 +120,6 @@
     cell.accessoryType = UITableViewCellAccessoryDetailButton;
     Risk_group *risk_group = [[self frcFromTV:tableView] objectAtIndexPath:indexPath];
     
-    NSMutableString *title = [NSMutableString stringWithFormat:@"%@%@ %@",
-                              risk_group.code, risk_group.short_name, risk_group.desc];
-    
-    [title replaceOccurrencesOfString:@"(null)"
-                           withString:@""
-                              options:0
-                                range:NSMakeRange(0, [title length])];
-    
     if(tableView == self.searchDisplayController.searchResultsTableView){
         cell.textLabel.text=risk_group.short_name;
     }
@@ -131,10 +129,15 @@
     cell.riskgroupnamelbl.text=risk_group.short_name;
     cell.riskgroupdesclbl.text=risk_group.desc;
     cell.riskgroupimagelbl.image = [UIImage imageWithData:risk_group.thumbnail];
+        
+    //set background color for selected row
+    if (self.selectedindexPath==nil) self.selectedindexPath=indexPath;
+    if ([indexPath compare:self.selectedindexPath]==NSOrderedSame)
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.8 green:1.0 blue:0.93 alpha:1.0];
+    else
+        cell.contentView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     }
-    
     return cell;
-
 }
 
 - (NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -143,7 +146,6 @@
     }
     return nil; // we don't want a section index.
 }
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (debug==1) {
@@ -170,11 +172,43 @@
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor colorWithRed:0.1 green:1.0 blue:0.1 alpha:1.0];
- 
+    if(tableView != self.searchDisplayController.searchResultsTableView){
+        
+        // Previous selected cell goes white
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:self.selectedindexPath];
+        cell.contentView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    
+        // Selected row goes green
+        cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.8 green:1.0 blue:0.93 alpha:1.0];
+    
+        // New selected cell
+        self.selectedindexPath=indexPath;
+    }
+    
+    Risk_group *riskGroup;
+    if(self.searchDisplayController.searchResultsTableView==tableView){
+        self.selectedindexPath=indexPath;
+        AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+        riskGroup=((Risk_group *)[self.searchFRC objectAtIndexPath:indexPath]);
+        globalVariables.selectedRiskGroupID=riskGroup.objectID;
+        globalVariables.selectedRiskGroupUUID= riskGroup.id;
+        globalVariables.selectedRiskGroupCode = riskGroup.code;
+        globalVariables.selectedRiskGroupTitle = [NSString stringWithFormat:@"%@ - %@", riskGroup.code ,riskGroup.short_name];
+        
+    }else{
+        self.selectedindexPath=indexPath;
+        AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+        riskGroup=((Risk_group *)[self.frc objectAtIndexPath:indexPath]);
+        globalVariables.selectedRiskGroupID=riskGroup.objectID;
+        globalVariables.selectedRiskGroupUUID= riskGroup.id;
+        globalVariables.selectedRiskGroupCode = riskGroup.code;
+        globalVariables.selectedRiskGroupTitle = [NSString stringWithFormat:@"%@ - %@", riskGroup.code ,riskGroup.short_name];
+    }
+    
     CoreDataHelper *cdh = [CoreDataHelper sharedHelper];
     [cdh backgroundSaveContext];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -225,6 +259,8 @@
             AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
             globalVariables.selectedRiskGroupID=newRisk_group.objectID;
             globalVariables.selectedRiskGroupUUID=key;
+            globalVariables.selectedRiskGroupCode = newRisk_group.code;
+            globalVariables.selectedRiskGroupTitle = [NSString stringWithFormat:@"%@ - %@", newRisk_group.code, newRisk_group.short_name];
             riskgroupviewcontroller.newRiskGroup=YES;
             }
     else {
@@ -237,21 +273,47 @@
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-        AGCRiskGroupViewController *riskgroupviewcontroller =
+    
+    UITableViewCell *cell;
+    
+    if(tableView != self.searchDisplayController.searchResultsTableView){
+        // Previous selected cell goes white
+        if(self.selectedindexPath!=nil){
+            cell = [tableView cellForRowAtIndexPath:self.selectedindexPath];
+            cell.contentView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+            }
+        // Selected row goes green
+        cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:0.8 green:1.0 blue:0.93 alpha:1.0];
+    
+        // New selected cell
+        self.selectedindexPath=indexPath;
+        
+    }
+    
+    AGCRiskGroupViewController *riskgroupviewcontroller =
                 [self.storyboard instantiateViewControllerWithIdentifier:@"RiskGroupViewController"];
     
+    Risk_group *riskGroup;
     if(self.searchDisplayController.searchResultsTableView==tableView){
                 riskgroupviewcontroller.selectedRiskGroupID =
                                                 [[self.searchFRC objectAtIndexPath:indexPath] objectID];
                 AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
                 globalVariables.selectedRiskGroupID=riskgroupviewcontroller.selectedRiskGroupID;
-                globalVariables.selectedRiskGroupUUID= ((Risk_group *)[self.searchFRC objectAtIndexPath:indexPath]).id;
+                riskGroup=((Risk_group *)[self.searchFRC objectAtIndexPath:indexPath]);
+                globalVariables.selectedRiskGroupUUID= riskGroup.id;
+                globalVariables.selectedRiskGroupCode = riskGroup.code;
+                globalVariables.selectedRiskGroupTitle = [NSString stringWithFormat:@"%@ - %@", riskGroup.code ,riskGroup.short_name];
+        
     }else{
                 riskgroupviewcontroller.selectedRiskGroupID =
                                                 [[self.frc objectAtIndexPath:indexPath] objectID];
                 AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
                 globalVariables.selectedRiskGroupID=riskgroupviewcontroller.selectedRiskGroupID;
-                globalVariables.selectedRiskGroupUUID= ((Risk_group *)[self.frc objectAtIndexPath:indexPath]).id;
+                riskGroup=((Risk_group *)[self.frc objectAtIndexPath:indexPath]);
+                globalVariables.selectedRiskGroupUUID= riskGroup.id;
+                globalVariables.selectedRiskGroupCode = riskGroup.code;
+                globalVariables.selectedRiskGroupTitle = [NSString stringWithFormat:@"%@ - %@", riskGroup.code ,riskGroup.short_name];
     }
     riskgroupviewcontroller.newRiskGroup=FALSE;
     [self.navigationController pushViewController:riskgroupviewcontroller animated:YES];
@@ -276,6 +338,7 @@
 
 
 -(void) deleteRiskGroup {
+    self.selectedindexPath=nil;
     Risk_group *deleteTarget = [self.frc objectAtIndexPath:self.deleteindexPath];
     [self.frc.managedObjectContext deleteObject:deleteTarget];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:self.deleteindexPath]
@@ -374,7 +437,6 @@
     
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor redColor];
-   // label.shadowColor = [UIColor darkGrayColor];
     label.shadowOffset = CGSizeMake(0,1);
     label.font = [UIFont boldSystemFontOfSize:fontSize];
     

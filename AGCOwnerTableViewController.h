@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) UIActionSheet *deleteConfirmActionSheet;
 @property (strong, nonatomic) NSIndexPath *deleteindexPath;
+@property (strong, nonatomic) IBOutlet UINavigationItem *titleLabel;
 - (IBAction)newOwner:(UIBarButtonItem *)sender;
 @property (nonatomic, assign) id<AGCOwnerSelectionDelegate> delegate;
 

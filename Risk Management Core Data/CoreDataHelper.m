@@ -14,7 +14,7 @@
 
 @implementation CoreDataHelper
 
-#define debug 0
+#define debug 1
 
 #pragma mark - SHARED HELPER
 + (CoreDataHelper*)sharedHelper {

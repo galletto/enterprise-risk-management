@@ -12,7 +12,7 @@
 
 @implementation CoreDataImporter
 
-#define debug 0
+#define debug 1
 
 + (void)saveContext:(NSManagedObjectContext*)context {
     if (debug==1) {

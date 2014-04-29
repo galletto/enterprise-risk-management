@@ -13,7 +13,7 @@
 
 @implementation CoreDataTableViewController
 
-#define debug 0
+#define debug 1
 
 #pragma mark - FETCHING
 - (void)performFetch {

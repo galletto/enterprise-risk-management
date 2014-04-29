@@ -13,7 +13,7 @@
 
 @implementation Thumbnailer
 
-#define debug 0
+#define debug 1
 
 + (void)createMissingThumbnailsForEntityName:(NSString*)entityName
                   withThumbnailAttributeName:(NSString*)thumbnailAttributeName

@@ -85,10 +85,12 @@
         }
     [super viewDidLoad];
     
+    AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+    self.titleLabel.title=globalVariables.selectedRiskGroupCode;
+    
     [self configureFetch];
     [self performFetch];
     self.deleteConfirmActionSheet.delegate = self;
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(performFetch)
@@ -293,7 +295,7 @@
           error:&error]) {
         NSLog(@"Couldn't obtain a permanent ID for object %@", error);
     }
-    AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
+    //AGCGlobalVariables *globalVariables = [AGCGlobalVariables sharedManager];
     // AGC hay que poner bien la relación dependiendo de risk_group
     //   newOwner.risk_group=(Risk_group *)globalVariables.selectedRiskGroupID;
     

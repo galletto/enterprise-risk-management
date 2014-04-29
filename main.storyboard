@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Risk Group Table View Controller - enterprise risk groups-->
+        <!--Risk Group Table View Controller - enterprise risk audit-->
         <scene sceneID="BAY-Db-XrM">
             <objects>
                 <tableViewController id="qVa-cN-FlB" customClass="AGCRiskGroupTableViewController" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="enterprise risk groups" id="8kB-vM-4Re">
+                    <navigationItem key="navigationItem" title="enterprise risk audit" id="8kB-vM-4Re">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="MRz-tD-eBB">
                             <connections>
                                 <action selector="toggleEditingMode:" destination="qVa-cN-FlB" id="12h-k6-fz3"/>
@@ -150,7 +150,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Risk group name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nU9-ne-I30">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Risk audit name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nU9-ne-I30">
                                         <rect key="frame" x="55" y="81" width="135" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -329,10 +329,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="risk group" id="oDm-bp-Thh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ywD-L8-P9t">
+                    <navigationItem key="navigationItem" title="risk audit" id="oDm-bp-Thh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8YL-8D-o52">
                             <connections>
-                                <action selector="cancel:" destination="eXL-MW-wNz" id="YCm-wT-oZo"/>
+                                <action selector="cancel:" destination="eXL-MW-wNz" id="b4n-uJ-1be"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ds3-1q-5Ed">
@@ -352,6 +352,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="RiskGroupLastModifiedField" destination="fsi-F9-ALD" id="bJR-IQ-N59"/>
                         <outlet property="RiskGroupNameField" destination="9PA-ST-Cnj" id="NRb-u0-lV4"/>
                         <outlet property="cameraButtonstatus" destination="FfZ-ao-iiF" id="fhk-b0-6LY"/>
+                        <outlet property="cancelButtonLabel" destination="8YL-8D-o52" id="6PY-Im-bsk"/>
+                        <outlet property="doneButton" destination="ds3-1q-5Ed" id="ohi-Pr-2Uh"/>
                         <outlet property="photoImageView" destination="gmI-Sb-J3q" id="ICX-dz-m3z"/>
                         <outlet property="scrollView" destination="4v0-nq-r5A" id="ppS-Cr-6JM"/>
                     </connections>
@@ -485,6 +487,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="backBarButtonItem" title="&lt;" id="PdT-QF-dTn"/>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="TpI-zY-8iy" id="ndR-yg-ORl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTf-2s-gqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

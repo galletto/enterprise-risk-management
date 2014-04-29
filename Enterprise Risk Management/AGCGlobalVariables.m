@@ -12,6 +12,8 @@
 
 @synthesize selectedRiskGroupID;
 @synthesize selectedRiskGroupUUID;
+@synthesize selectedRiskGroupCode;
+@synthesize selectedRiskGroupTitle;
 
 + (id)sharedManager {
     static AGCGlobalVariables *sharedMyManager = nil;
@@ -24,8 +26,10 @@
 
 - (id)init {
     if (self = [super init]) {
-        selectedRiskGroupID   = nil;
-        selectedRiskGroupUUID   = nil;
+        selectedRiskGroupID = nil;
+        selectedRiskGroupUUID = nil;
+        selectedRiskGroupCode = nil;
+        selectedRiskGroupTitle = nil;
     }
     return self;
 }

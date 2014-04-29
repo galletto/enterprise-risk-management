@@ -26,12 +26,14 @@
 - (IBAction)albumButton:(UIButton *)sender;
 - (IBAction)cameraButton:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *cameraButtonstatus;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButtonLabel;
 
 @end
 
 @implementation AGCRiskGroupViewController
 
-#define debug 0
+#define debug 1
 
 #pragma mark - INTERACTION
 - (IBAction)done:(id)sender {
@@ -312,6 +314,9 @@
     self.RiskGroupLastModifiedField.delegate=self;
     self.RiskGroupLastModifiedAtField.delegate=self;
     self.scrollView.contentSize = CGSizeMake(768.0f, 800.0f);
+    
+    if (!self.newRiskGroup) self.cancelButtonLabel.enabled=NO;
+        else self.cancelButtonLabel.enabled=YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
